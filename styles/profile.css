@@ -1,0 +1,131 @@
+.profile-banner {
+    background-image: url(https://res.cloudinary.com/omaha-code/image/upload/ar_4:3,c_fill,dpr_1.0,e_art:quartz,g_auto,h_396,q_auto:best,t_Linkedin_official,w_1584/v1561576558/mountains-1412683_1280.png);
+    height: 13vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.profile-wrapper {
+    position: absolute;
+    z-index: 10;
+    top: 90px;
+    left: 25px;
+}
+
+.profile-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center right;
+}
+
+.username {
+    float: left;
+    font-size: 1.5rem;
+}
+
+.number-of-nfts {
+    float: left;
+    margin-left: 30px;
+    font-size: 1.5rem;
+}
+
+.number-of-friends {
+    float: left;
+    margin-left: 30px;
+    font-size: 1.5rem;
+}
+
+.profile-dot-divider {
+    float: left;
+    margin-left: 30px;
+    font-size: 1.5rem;
+}
+
+.profile-text-container {
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 210px;
+    left: 200px;
+    resize: none;
+}
+
+
+/* START TABS */
+
+
+/* Style the tab */
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* Style the buttons that are used to open the tab content */
+
+.tab button {
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+
+/* Change background color of buttons on hover */
+
+.tab button:hover {
+    background-color: #ddd;
+}
+
+
+/* Create an active/current tablink class */
+
+.tab button.active {
+    background-color: #ccc;
+}
+
+
+/* Style the tab content */
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+.collection-gallery {
+    width: 100%;
+    height: auto;
+}
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
