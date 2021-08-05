@@ -6,6 +6,7 @@ import NFTGif from '../public/images/nft.gif';
 import Image from 'next/image';
 import Showcase from '../src/Showcase';
 import Footer from '../src/Footer';
+import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,22 +49,19 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = () => {
   const classes = useStyles();
-  const settings = {
-      className: "center",
-      centerMode: true,
-      infinite: true,
-      centerPadding: "60px",
-      slidesToShow: 3,
-      speed: 500
-    };
+
     return (
       <>
         <Header />
           <Grid container spacing={0} className={classes.gridContainer}>
             <Grid item xs={6}>
                 <h1>Join a community today!</h1>
-                <button href='#' className={classes.btn} >Explore</button>
-                <button href='#' className={classes.btn} >Get Started!</button>
+                <Link href='/discover' >
+                  <button className={classes.btn} >Explore</button>
+                </Link>
+                <Link href='/profile' >
+                  <button className={classes.btn} >Get Started!</button>
+                </Link>
             </Grid>
             <Grid item xs={6}>
             <Image src={NFTGif} width="480 " height="480 " frameBorder="0 " className="giphy-embed gif "/>

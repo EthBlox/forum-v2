@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { alpha, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -38,6 +38,13 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.down('sm')]: {
       display: 'none',
       },
+  },
+  dropdownLink: {
+    color: '#00AEE9',
+    textDecoration: 'none',
+    '&:hover': {
+      textDecoration: 'none',
+    }
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -114,8 +121,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -149,9 +156,15 @@ export default function Header() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>My Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My Collections</MenuItem>
-      <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+      <Link href="/profile">
+        <a className={classes.dropdownLink}><MenuItem onClick={handleMenuClose}>My Profile</MenuItem></a>
+      </Link>
+      <Link href="/collections">
+        <a className={classes.dropdownLink} ><MenuItem onClick={handleMenuClose}>My Collections</MenuItem></a>
+      </Link>
+      <Link href="/settings">
+        <a className={classes.dropdownLink}><MenuItem onClick={handleMenuClose}>Settings</MenuItem></a>
+      </Link>
     </Menu>
   );
 
@@ -201,6 +214,7 @@ export default function Header() {
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
+          href="/profile"
         >
           <AccountCircle />
         </IconButton>
@@ -210,72 +224,74 @@ export default function Header() {
   );
 
   return (
-    <div className={classes.grow}>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
-            ETHBlox
-          </Typography>
-          <nav>
-            <Link href="/discover" variant="button" color="textPrimary">
-            <span className={classes.link}>Discover</span>
-            </Link>
-            <Link href="/chat" variant="button" color="textPrimary">
-            <span className={classes.link}>Chat Rooms</span>
-            </Link>
-          </nav>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+    <>
+      <div className={classes.grow}>
+        <AppBar position="static" className={classes.appBar}>
+          <Toolbar>
+            <Typography className={classes.title} variant="h6" noWrap>
+              ETHBlox
+            </Typography>
+            <nav>
+              <Link href="/discover" variant="button" color="textPrimary">
+                <a><span className={classes.link}>Discover</span></a>
+              </Link>
+              <Link href="/chat" variant="button" color="textPrimary">
+                <a><span className={classes.link}>Chat Rooms</span></a>
+              </Link>
+            </nav>
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+              />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </div>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit" className={classes.buttonIcon}>
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit" className={classes.buttonIcon}>
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-              className={classes.buttonIcon}
-            >
-              <AccountCircle />
-            </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton aria-label="show 4 new mails" color="inherit" className={classes.buttonIcon}>
+                <Badge badgeContent={4} color="secondary">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton aria-label="show 17 new notifications" color="inherit" className={classes.buttonIcon}>
+                <Badge badgeContent={17} color="secondary">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+                className={classes.buttonIcon}
+              >
+                  <AccountCircle />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
+    </>
   );
 }

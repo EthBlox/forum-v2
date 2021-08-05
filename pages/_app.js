@@ -6,6 +6,7 @@ import theme from '../src/theme';
 import '../styles/index.css';
 import '../styles/profile.css';
 import '../styles/Footer.css';
+import 'ui-neumorphism/dist/index.css';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -24,10 +25,10 @@ export default function MyApp(props) {
         <title>My page</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <Component {...pageProps} />
-      </ThemeProvider>
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <Component {...pageProps} />
+          </ThemeProvider>
     </React.Fragment>
   );
 }
