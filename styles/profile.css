@@ -24,19 +24,23 @@
 
 .username {
     float: left;
+    margin-left: 15%;
     font-size: 1.5rem;
+    color: #ad14f2;
 }
 
 .number-of-nfts {
     float: left;
     margin-left: 30px;
     font-size: 1.5rem;
+    color: #ad14f2;
 }
 
 .number-of-friends {
     float: left;
     margin-left: 30px;
     font-size: 1.5rem;
+    color: #ad14f2;
 }
 
 .profile-dot-divider {
@@ -50,7 +54,6 @@
     overflow: hidden;
     position: absolute;
     top: 210px;
-    left: 200px;
     resize: none;
 }
 
@@ -98,7 +101,6 @@
 /* Style the tab content */
 
 .tabcontent {
-    display: none;
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
@@ -128,4 +130,77 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+
+/* Friends */
+
+.friends-container {
+    margin: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.friends-list {
+    display: inline-block;
+}
+
+.friends-list-item {
+    margin: 20px;
+    height: 100px;
+    overflow-x: hidden;
+    object-position: center;
+}
+
+.friends-list-item img {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+.friends-list-item p {
+    float: left;
+    margin-left: 10px;
+    margin-top: 35px;
+    text-align: justify;
+}
+
+
+/* GROUPS */
+
+.groups-container {
+    margin: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.groups-list {
+    width: 300px;
+    display: inline-block;
+}
+
+.groups-h3 {
+    font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+    color: #ad14f2;
+    margin: 10px;
+}
+
+.groups-list-item img {
+    width: 200px;
+}
+
+.groups-p {
+    font: 200 12px/1.5 Georgia, Times New Roman, serif;
+    color: black;
+}
+
+.groups-list-item {
+    padding: 10px;
+    overflow: hidden;
+    margin: 20px;
+}
+
+.groups-list-item:hover {
+    background: #eee;
+    cursor: pointer;
 }
