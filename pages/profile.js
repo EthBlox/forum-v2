@@ -3,14 +3,13 @@ import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Header from '../src/Header';
-import Footer from '../src/Footer';
-import Connect from '../src/Connect';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Connect from '../components/Connect';
 import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -146,28 +145,28 @@ const Profile = () => {
                 <div className="collection-gallery">
                 <div className="gallery">
                     <a target="_blank" href="../images/CyberKong.png">
-                    <img src="../images/CyberKong.png" alt="Cinque Terre" width="600" height="400" />
+                    <img src="../assets/CyberKong.png" width="600" height="400" />
                     </a>
                 <div className="desc">Add a description of the image here</div>
                 </div>
                 
                 <div className="gallery">
                     <a target="_blank" href="../images/CryptoTinies.png">
-                    <img src="../images/CryptoTinies.png" alt="Forest" width="600" height="400" />
+                    <img src="../assets/CryptoTinies.png" width="600" height="400" />
                     </a>
                     <div className="desc">Add a description of the image here</div>
                 </div>
                 
                 <div className="gallery">
                     <a target="_blank" href="../images/GSA.png">
-                    <img src="../images/GSA.png" alt="Northern Lights" width="600" height="400" />
+                    <img src="../assets/GSA.png" width="600" height="400" />
                     </a>
                     <div className="desc">Add a description of the image here</div>
                 </div>
                 
                 <div className="gallery">
                     <a target="_blank" href="../images/SupDuck.png">
-                    <img src="../images/SupDuck.png" alt="Mountains" width="600" height="400" />
+                    <img src="../assets/SupDuck.png" width="600" height="400" />
                     </a>
                     <div className="desc">Add a description of the image here</div>
                 </div>

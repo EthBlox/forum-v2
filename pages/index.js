@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Header from '../src/Header';
+import Header from '../components/Header';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import NFTGif from '../public/images/nft.gif';
+import NFTGif from '../public/assets/nft.gif';
 import Image from 'next/image';
-import Showcase from '../src/Showcase';
-import Footer from '../src/Footer';
+import Showcase from '../components/Showcase';
+import Footer from '../components/Footer';
 import Link from 'next/link';
 
 const useStyles = makeStyles((theme) => ({
