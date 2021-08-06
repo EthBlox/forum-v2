@@ -1,12 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider } from '@material-ui/core/styles';
-import theme from '../src/theme';
+import theme from '../components/theme';
 import '../styles/index.css';
 import '../styles/profile.css';
 import '../styles/Footer.css';
 import 'ui-neumorphism/dist/index.css';
+
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
