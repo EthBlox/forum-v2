@@ -40,9 +40,8 @@ const generateMessageSignature = (ethAddy, appName) => {
   );
 }
 
-const generateSignature = async (signer) => {
+const generateSignature = async (signer, userAddy ) => {
   let signed;
-  const userAddy = await signer.getAddress();
   const message = generateMessageSignature(userAddy, 'EthBlox');
   signed = await signer.signMessage(message);
 };
@@ -62,8 +61,9 @@ const Connect = (props) => {
     const signer = provider.getSigner();
     if (signer._isSigner) {
       setConnected(true);
-      generateSignature(signer);
-      props.onConnect(true);
+      const userAddy = await signer.getAddress();
+      const signature = await generateSignature(signer, userAddy);
+      props.onConnect(true, userAddy);
     } else {
       console.log('error');
     }
