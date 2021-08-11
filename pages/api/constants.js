@@ -1,0 +1,11 @@
+export const COVALENT_API_HOST = "https://api.covalenthq.com/v1";
+export const OPENSEA_API_HOST = "https://api.opensea.io/api/v1";
+export const ETHEREUM = 1;
+export const KOVAN = 42;
+export const MATIC = 137;
+export const MUMBAI = 80001;
+export const BSC_MAINNET = 56;
+export const BSC_TESTNET = 97;
+export const AVALANCHE = 43114;
+export const FUJI = 43113;
+export const FANTO = 250;

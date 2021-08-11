@@ -1,7 +1,7 @@
 import React from 'react';
 import CeramicClient from '@ceramicnetwork/http-client';
 import KeyDidResolver from 'key-did-resolver';
-import { Ed25519Provider } from 'key-did-provider-ed25519'
+import { Ed25519Provider } from 'key-did-provider-ed25519';
 import { ThreeIdConnect, EthereumAuthProvider } from '@3id/connect';
 import { DID } from 'dids';
 import { randomBytes } from '@stablelib/random';
