@@ -6,7 +6,6 @@ import {
   getTokenBalancesForAddress
 } from '../pages/api/classA';
 import {
-  ETHEREUM,
   MATIC
 } from '../pages/api/constants';
 import { getTokenMetaData } from '../pages/api/opensea';
@@ -17,7 +16,7 @@ const Collections = ({ address, collectionsLoaded, loaded, importCollections }) 
   const [collections, setCollections] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const queryAddress = address;
-  const chainID = ETHEREUM;
+  const chainID = MATIC;
 
   const getHistoricalPortfolioValueOverTimeHandler = async () => {
     console.log('running');
