@@ -102,8 +102,15 @@
 
 .tabcontent {
     padding: 6px 12px;
-    border: 1px solid #ccc;
     border-top: none;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+}
+
+.tabcontent h2 {
+    font-size: 2rem;
+    padding-bottom: 5%;
 }
 
 .collection-gallery {
@@ -112,10 +119,10 @@
 }
 
 div.gallery {
-    margin: 5px;
+    margin: 50px;
     border: 1px solid #ccc;
     float: left;
-    width: 180px;
+    width: 20vw;
 }
 
 div.gallery:hover {
@@ -130,6 +137,10 @@ div.gallery img {
 div.desc {
     padding: 15px;
     text-align: center;
+}
+
+.pagination {
+    margin-top: 50%;
 }
 
 

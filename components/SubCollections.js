@@ -12,13 +12,13 @@ import { getTokenMetaData } from '../pages/api/queries';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const SubCollections = ({ address, loadCollection }) => {
 
-  const [collection, setCollection] = useState(loadCollection);
+const SubCollections = ({ address, tokenAddress, index }) => {
+
   const [tokens, setTokens] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const queryAddress = address;
-  const tokenAddress = collection.primary_asset_contracts[0].address
+  console.log(index);
 
   useEffect(() => {
     const createTokens = async () => {
@@ -43,9 +43,13 @@ const SubCollections = ({ address, loadCollection }) => {
 
 return (
   <>
-    {tokens?.map( (token) => (
-      <div className="gallery" key={Math.round(Math.random()*100)}>
-          <Image src={token.image_url} width="600" height="400" />
+    {tokens?.slice(index.prev, index.current)?.map( (token) => (
+      <div className="gallery" key={Math.random()*100}>
+        <Image 
+          src={token.image_url} 
+          width="600" 
+          height="600" 
+        />
       <div className="desc">{token.name}</div>
     </div> ))}
   </>

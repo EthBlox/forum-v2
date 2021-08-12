@@ -25,8 +25,6 @@ const generateMessageSignature = (ethAddy, appName) => {
     '\n' +
     '\n' +
     '\n' +
-    'The hash of your non-recoverable, private, non-persisted password or secret \n' +
-    'phrase is: \n' +
     '\n' +
     '\n' +
     '\n' +
@@ -60,10 +58,10 @@ const Connect = (props) => {
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
     if (signer._isSigner) {
-      setConnected(true);
       const userAddy = await signer.getAddress();
       const signature = await generateSignature(signer, userAddy);
       props.onConnect(true, userAddy);
+      setConnected(true);
     } else {
       console.log('error');
     }
