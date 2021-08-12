@@ -69,8 +69,11 @@ const useStyles = makeStyles({
     right:"0",
   },
   paginationLoc: {
-    marginTop: "50%",
+    marginTop: "40%",
     marginLeft: "48%",
+  },
+  switchButton: {
+    margin: "2%"
   }
 });
 
@@ -150,6 +153,8 @@ const Profile = () => {
       <div>
         <div className="tabcontent" style={{display: "block"}} >
           <h2>Click on a Collection to view your NFTs</h2>
+          <Button className={classes.switchButton} >Ethereum</Button>
+          <Button className={classes.switchButton} >Polygon</Button>
           <div className="collection-gallery" >
             <Collections 
               address={address} 
@@ -275,7 +280,7 @@ const Profile = () => {
             </div>
             <div className="profile-text-container">
                 <div className="username">
-                    <h4>cheb.eth</h4>
+                    <h4>{address}</h4>
                 </div>
                 <div className="profile-dot-divider">
                     <h4>•</h4>

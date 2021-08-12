@@ -6,11 +6,7 @@ import Web3Modal from "web3modal";
 const generateMessageSignature = (ethAddy, appName) => {
   return (
     '******************************************************************************** \n' +
-    'READ THIS MESSAGE CAREFULLY. \n' +
-    'DO NOT SHARE THIS SIGNED MESSAGE WITH ANYONE OR THEY WILL HAVE READ AND WRITE \n' +
-    'ACCESS TO THIS APPLICATION. \n' +
-    'DO NOT SIGN THIS MESSAGE IF THE FOLLOWING IS NOT TRUE OR YOU DO NOT CONSENT \n' +
-    'TO THE CURRENT APPLICATION HAVING ACCESS TO THE FOLLOWING APPLICATION. \n' +
+    'Verification message \n' +
     '******************************************************************************** \n' +
     'The Ethereum address used by this application is: \n' +
     '\n' +
@@ -24,17 +20,7 @@ const generateMessageSignature = (ethAddy, appName) => {
     appName +
     '\n' +
     '\n' +
-    '\n' +
-    '\n' +
-    '\n' +
-    '\n' +
-    '\n' +
-    '******************************************************************************** \n' +
-    'ONLY SIGN THIS MESSAGE IF YOU CONSENT TO THE CURRENT PAGE ACCESSING THE KEYS \n' +
-    'ASSOCIATED WITH THE ABOVE ADDRESS AND APPLICATION. \n' +
-    'AGAIN, DO NOT SHARE THIS SIGNED MESSAGE WITH ANYONE OR THEY WILL HAVE READ AND \n' +
-    'WRITE ACCESS TO THIS APPLICATION. \n' +
-    '******************************************************************************** \n'
+    '\n' 
   );
 }
 
