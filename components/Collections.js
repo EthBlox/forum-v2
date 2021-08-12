@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   getNFTTokenIDs, 
   getExternalNFTMetadata, 
@@ -13,12 +13,13 @@ import { getCollectionsData } from '../pages/api/queries';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const Collections = ({ address, loadCollections, collectionsLoaded }) => {
+const Collections = ({ address, loadCollections, collectionsLoaded, index, onClick }) => {
 
   const [collections, setCollections] = useState(loadCollections);
   const [isLoading, setIsLoading] = useState(false);
   const queryAddress = address;
   const chainID = ETHEREUM;
+  console.log(index);
 
   useEffect(() => {
     const createCollection = async () => {
@@ -33,8 +34,16 @@ const Collections = ({ address, loadCollections, collectionsLoaded }) => {
     };
     if (collections == null) {
       createCollection();
+    } else {
+      console.log("collection loaded");
     }
   }, []);
+
+  const clickedCollection = (e) => {
+    console.log('hello');
+    const selectedAddress = e.currentTarget.getAttribute('contract');
+    onClick(selectedAddress);
+  };
 
 
 
@@ -42,9 +51,15 @@ const Collections = ({ address, loadCollections, collectionsLoaded }) => {
 
     return (
       <>
-        {collections?.map( (collection) => (
-          <div className="gallery" key={Math.round(Math.random()*100)}>
-              <Image src={collection.featured_image_url} width="600" height="400" />
+        {collections?.slice(index.prev, index.current)?.map( (collection) => (
+          <div className="gallery" >
+              <Image 
+                src={collection.featured_image_url} 
+                width="600" 
+                height="400" 
+                onClick={clickedCollection} 
+                contract={collection.primary_asset_contracts[0].address} 
+              />
           <div className="desc">{collection.name}</div>
         </div> ))}
 

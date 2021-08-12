@@ -10,11 +10,11 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-// import Collections from '../components/ethCollections';
 import Loading from '../components/Loading';
 import Collections from '../components/Collections';
 import SubCollections from '../components/SubCollections';
-import Button from '@material-ui/core/Button';
+import Pagination from '@material-ui/lab/Pagination';
+import { Button } from 'ui-neumorphism';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     height: "5vh",
   },
   lazyFooter: {
-    paddingBottom: "800px"
+    paddingBottom: "0px"
   },
   footerPost: {
     position: "absolute",
@@ -68,6 +68,10 @@ const useStyles = makeStyles({
     bottom:"0",
     right:"0",
   },
+  paginationLoc: {
+    marginTop: "50%",
+    marginLeft: "48%",
+  }
 });
 
 
@@ -77,11 +81,44 @@ const Profile = () => {
   const [profile, setProfile] = useState(false);
   const [address, setAddress] = useState(null);
   const [collections, setCollections] = useState(null);
+  const [pageCollections, setPageCollections] = useState(collections);
   const [subTab, setSubTab] = useState(false);
+  const [page, setPage] = useState(1);
+  const [subPage, setSubPage] = useState(1);
+  const [pageRange, setPageRange] = useState({
+    prev: 0,
+    current: 9
+  });
+  const [subPageRange, setSubPageRange] = useState({
+    prev: 0,
+    current: 9
+  });
+  const [selectedAddress, setSelectedAddress] = useState(null);
+  let totalPageCount;
+  const pageSize = 10;
+  if (collections !== null) {
+    totalPageCount = Math.ceil(collections.length / pageSize);
+  }
+  const handlePageChange = (event, value) => {
+    console.log(value);
+    setPage(value);
+    setPageRange({
+      prev: 10 * (value - 1),
+      current: 10 * value
+    })
+  };
 
+  const handleSubPageChange = (event, value) => {
+    console.log(value);
+    setSubPage(value);
+    setSubPageRange({
+      prev: 10 * (value - 1),
+      current: 10 * value
+    })
+  };
   console.log(collections);
 
-  const handleChange = (event, newValue) => {
+  const handleTabChange = (event, newValue) => {
     setValue(newValue);
   };
 
@@ -92,66 +129,73 @@ const Profile = () => {
 
   const collectionsLoadedHander = (collections) => {
     setCollections(collections);
+    console.log(collections.length);
   };
 
   const collectionsHandler = () => {
     console.log(subTab);
     setSubTab(!subTab);
   }
+  
+  const getSelectedAddress = (address) => {
+    setSelectedAddress(address);
+    collectionsHandler();
+    console.log(address);
+  }
 
   const collectionsTabContent = (
     <>
       { !subTab ?
       <>
-        <div className="tabcontent" style={{display: "block"}} onClick={collectionsHandler}>
-          <div className="collection-gallery">
-            <Collections address={address} loadCollections={collections} collectionsLoaded={collectionsLoadedHander} />
+      <div>
+        <div className="tabcontent" style={{display: "block"}} >
+          <h2>Click on a Collection to view your NFTs</h2>
+          <div className="collection-gallery" >
+            <Collections 
+              address={address} 
+              loadCollections={collections} 
+              collectionsLoaded={collectionsLoadedHander} 
+              index={pageRange} 
+              onClick={getSelectedAddress}
+            />
           </div>
-        </div>  
+        </div>
+        <Pagination 
+          className={classes.paginationLoc} 
+          count={totalPageCount} 
+          page={page} 
+          onChange={handlePageChange} 
+          size="large"
+        />
+      </div>
       </>
       :
       <>
-        <div className="tabcontent" style={{display: "block"}}>
-          <Button onClick={collectionsHandler}>Back</Button>
-          <div className="collection-gallery">
-          { collections?.map( (collection) => (
-            <SubCollections address={address} loadCollection={collection} key={Math.round(Math.random()*100)}/>
-          ))}
-          </div>
-        </div>  
+        <div>
+          <div className="tabcontent" style={{display: "block"}}>
+            <Button onClick={collectionsHandler}>Back</Button>
+            <div className="collection-gallery">
+              <SubCollections 
+                address={address} 
+                tokenAddress={selectedAddress} 
+                key={Math.round(Math.random()*100)} 
+                index={subPageRange} 
+              />
+            </div>
+          </div> 
+          <Pagination 
+            className={classes.paginationLoc} 
+            count={totalPageCount} 
+            page={subPage} 
+            onChange={handleSubPageChange} 
+            size="large"
+          />
+        </div>
       </>
       }
     </>
   );
-
-
-  // const collectionsTabContent = () => {
-  //   console.log('Render Collections');
-  //   return (
-  //     <>
-  //       { !subTab ?
-  //       <>
-  //         <div className="tabcontent" style={{display: "block"}} onClick={collectionsHandler}>
-  //           <div className="collection-gallery">
-  //             <Collections address={address} loadCollections={collections} />
-  //           </div>
-  //         </div>  
-  //       </>
-  //       :
-  //       <>
-  //         <div className="tabcontent" style={{display: "block"}}>
-  //           <Button onClick={collectionsHandler}>Back</Button>
-  //           <div className="collection-gallery">
-  //             <SubCollections address={address} loadCollections={collections} />
-  //           </div>
-  //         </div>  
-  //       </>
-  //       }
-  //     </>
-  //   );
-  // };
-
-
+  
   const friendsTabContent = (
     <div className="tabcontent">
       <div className="friends-container">
@@ -250,7 +294,7 @@ const Profile = () => {
             <Paper className={classes.root}>
               <Tabs
                 value={value}
-                onChange={handleChange}
+                onChange={handleTabChange}
                 indicatorColor="primary"
                 textColor="primary"
                 centered
