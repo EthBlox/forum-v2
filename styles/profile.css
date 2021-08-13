@@ -1,6 +1,6 @@
 .profile-banner {
     background-image: url(https://res.cloudinary.com/omaha-code/image/upload/ar_4:3,c_fill,dpr_1.0,e_art:quartz,g_auto,h_396,q_auto:best,t_Linkedin_official,w_1584/v1561576558/mountains-1412683_1280.png);
-    height: 13vh;
+    height: 130px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,13 +10,13 @@
 .profile-wrapper {
     position: absolute;
     z-index: 10;
-    top: 90px;
+    top: 30px;
     left: 25px;
 }
 
 .profile-image {
-    width: 160px;
-    height: 160px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center right;
@@ -26,21 +26,18 @@
     float: left;
     margin-left: 15%;
     font-size: 1.5rem;
-    color: #ad14f2;
 }
 
 .number-of-nfts {
     float: left;
     margin-left: 30px;
     font-size: 1.5rem;
-    color: #ad14f2;
 }
 
 .number-of-friends {
     float: left;
     margin-left: 30px;
     font-size: 1.5rem;
-    color: #ad14f2;
 }
 
 .profile-dot-divider {
@@ -53,8 +50,11 @@
     width: 100%;
     overflow: hidden;
     position: absolute;
-    top: 210px;
+    top: 190px;
     resize: none;
+    -webkit-text-stroke: 1px black;
+    color: white;
+    white-space: nowrap;
 }
 
 
