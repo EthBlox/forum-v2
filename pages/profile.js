@@ -17,6 +17,15 @@ import PolyCollections from '../components/PolyCollections';
 import SubPolyCollections from '../components/SubPolyCollections';
 import Pagination from '@material-ui/lab/Pagination';
 import { Button } from 'ui-neumorphism';
+import { 
+  getTokenBalancesForAddress
+} from '../pages/api/classA';
+import {
+  ETHEREUM,
+  MATIC
+} from '../pages/api/constants';
+
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -88,6 +97,7 @@ const Profile = () => {
   const [value, setValue] = useState(0);
   const [profile, setProfile] = useState(false);
   const [address, setAddress] = useState(null);
+  const [balance, setBalance] = useState(0);
 
   const pageSize = 10;
 
@@ -107,6 +117,76 @@ const Profile = () => {
     setAddress(address);
     setProfile(connected);
   };
+
+
+  // const TokenBal = async (address) => {
+  //   const ETH_res = await getTokenBalancesForAddress(ETHEREUM, address);
+  //   const eth_tokens = ETH_res.data.items;
+  //   let eth_bal;
+  //   for (let i=0; i<eth_tokens.length; i++) {
+  //     if (eth_tokens[i].supports_erc.includes("erc721") && eth_tokens[i].balance != null){
+  //       eth_bal += +eth_tokens[i].balance;
+  //     }
+  //   }
+  
+  //   const Matic_res = await getTokenBalancesForAddress(MATIC, address);
+  //   const matic_tokens = Matic_res.data.items;
+  //   let matic_bal;
+  
+  //   for (let i=0; i<matic_tokens.length; i++) {
+  //     if (matic_tokens[i].supports_erc.includes("erc721") && matic_tokens[i].balance != null){
+  //       matic_bal += +matic_tokens[i].balance;
+  //     }
+  //   }
+  //   const total = matic_bal + eth_bal;
+  //   console.log(total);
+  //   return total;
+  
+  // };
+
+  useEffect(() => {
+    const TokenBal = async (address) => {
+      console.log('running');
+      const ETH_res = await getTokenBalancesForAddress(ETHEREUM, address, {
+        nft: true,
+        'no-nft-fetch': true,
+      });
+      const eth_tokens = ETH_res.data.items;
+      console.log(eth_tokens);
+      let eth_bal = 0;
+      for (let i=0; i<eth_tokens.length; i++) {
+        if (eth_tokens[i].supports_erc?.includes("erc721") && eth_tokens[i].balance != null){
+          eth_bal += +eth_tokens[i].balance;
+          console.log(eth_bal);
+        }
+      };
+    
+      const Matic_res = await getTokenBalancesForAddress(MATIC, address, {
+        nft: true,
+        'no-nft-fetch': true,
+      });
+      const matic_tokens = Matic_res.data.items;
+      console.log(matic_tokens);
+      let matic_bal = 0;
+    
+      for (let i=0; i<matic_tokens.length; i++) {
+        if (matic_tokens[i].supports_erc?.includes("erc721") && matic_tokens[i].balance != null){
+          matic_bal += +matic_tokens[i].balance;
+          console.log(matic_bal);
+        }
+      };
+      const total = matic_bal + eth_bal;
+      console.log(total);
+      setBalance(total);
+    
+    };
+    if (profile) {
+      TokenBal(address);
+    }
+    console.log('test')
+  },[profile]);
+  
+  
 
 
 
@@ -416,7 +496,7 @@ const Profile = () => {
                     <h4>•</h4>
                 </div>
                 <div className="number-of-nfts">
-                    <h4>23 NFTs</h4>
+                    <h4>{balance} NFTs</h4>
                 </div>
                 <div className="profile-dot-divider">
                     <h4>•</h4>

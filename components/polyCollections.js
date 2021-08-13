@@ -12,9 +12,10 @@ import Default from '../public/assets/comingSoon.gif';
 import getImage from './getImage';
 import { Button } from 'ui-neumorphism';
 import Link from 'next/link';
+import Grid from '@material-ui/core/Grid';
 
 
-const PolyCollections = ({ address, collectionsLoaded, onClick }) => {
+const PolyCollections = ({ address, collectionsLoaded, index, onClick }) => {
 
   const [collections, setCollections] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -86,30 +87,46 @@ const PolyCollections = ({ address, collectionsLoaded, onClick }) => {
 
     return (
       <>
-        {collections?.map( (collection) => (
-          <div className="gallery" key={Math.round(Math.random()*100)}>
-            <Image 
-              // src={collection.logo_url == "" ? getImage(collection?.contract_address, collection?.nft_data[0]?.token_id) : Default}
-              src = {Default} 
-              width="600" 
-              height="400" 
-              onClick={clickedCollection} 
-              contract={collection.contract_address} 
-            />
-          <div className="desc">{collection.contract_name}</div>
-          <Link
-            href={{
-              pathname: "/chatroom/[id]",
-              query: {
-                image_url: "",
-                name: collection.contract_name
-              }
-            }}
-            as={`/chatroom/${collection.contract_address}`}
-          >
-          <Button>Chat Room</Button>
-          </Link>   
-        </div> ))}
+        <Grid container spacing={0} >
+        {collections?.slice(index.prev, index.current)?.map( (collection) => (
+          <Grid item xs={6} >
+            <div className="profile_cards">
+              <div className="profile_card ">
+                <img 
+                  className="profile_card__image "
+                  src="../assets/comingSoon.gif"  
+                  onClick={clickedCollection} 
+                  contract={collection.contract_address} 
+                />
+                <div className="profile_card__overlay ">
+                  <div className="profile_card__header ">
+                    <svg className="profile_card__arc " xmlns="http://www.w3.org/2000/svg "><path /></svg>
+                    <img className="profile_card__thumb " src="https://devforum.roblox.com/uploads/default/original/4X/c/5/f/c5fc157827728c0030ce41031b1deeb3826b751e.png " alt=" " />
+                    <div className="profile_card__header-text ">
+                      <h3 className="profile_card__title ">{collection.contract_name}</h3>
+                      <span className="profile_card__status ">1 hour ago</span>
+                    </div>
+                  </div>
+                  <p className="profile_card__description ">
+                  <Link
+                    href={{
+                      pathname: "/chatroom/[id]",
+                      query: {
+                        image_url: "",
+                        name: collection.contract_name
+                      }
+                    }}
+                    as={`/chatroom/${collection.contract_address}`}
+                  >
+                  <Button>Chat Room</Button>
+                  </Link>   
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Grid>
+        ))}
+        </Grid>
       </>
     )
   }

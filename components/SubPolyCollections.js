@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Default from '../public/assets/comingSoon.gif';
 import { Button } from 'ui-neumorphism';
 import Link from 'next/link';
+import Grid from '@material-ui/core/Grid';
 
 
 const SubCollections = ({ tokenAddress, collections, index }) => {
@@ -56,7 +57,7 @@ const SubCollections = ({ tokenAddress, collections, index }) => {
 
     return (
       <>
-        {nfts?.map( (nft) => (
+        {/* {nfts?.slice(index.prev, index.current)?.map( (nft) => (
           <div className="gallery" key={Math.random()*100}>
             <Image 
               src={Default } 
@@ -76,7 +77,45 @@ const SubCollections = ({ tokenAddress, collections, index }) => {
           >
             <Button>Chat Room</Button>
           </Link>      
-        </div> ))}
+        </div> ))} */}
+        <Grid container spacing={0} >
+        {nfts?.slice(index.prev, index.current)?.map( (nft) => (
+          <Grid item xs={6} >
+            <div className="profile_cards">
+              <div className="profile_card ">
+                <img 
+                  className="profile_card__image "
+                  src="../assets/comingSoon.gif"  
+                />
+                <div className="profile_card__overlay ">
+                  <div className="profile_card__header ">
+                    <svg className="profile_card__arc " xmlns="http://www.w3.org/2000/svg "><path /></svg>
+                    <img className="profile_card__thumb " src="https://devforum.roblox.com/uploads/default/original/4X/c/5/f/c5fc157827728c0030ce41031b1deeb3826b751e.png " alt=" " />
+                    <div className="profile_card__header-text ">
+                      <h3 className="profile_card__title ">{name + ' #' + nft[0].token_id}</h3>
+                      <span className="profile_card__status ">1 hour ago</span>
+                    </div>
+                  </div>
+                  <p className="profile_card__description ">
+                  <Link
+                    href={{
+                      pathname: "/chatroom/[id]/[comment]",
+                      query: {
+                        image_url: "",
+                        name: name + " #" + nft[0].token_id
+                      }
+                    }}
+                    as={`/chatroom/${tokenAddress}/${nft[0].token_id}`}
+                  >
+                    <Button>Chat Room</Button>
+                  </Link>  
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Grid>
+        ))}
+        </Grid>
       </>
     )
   }

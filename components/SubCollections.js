@@ -12,6 +12,7 @@ import { getTokenMetaData } from '../pages/api/queries';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'ui-neumorphism';
+import Grid from '@material-ui/core/Grid';
 
 
 const SubCollections = ({ address, tokenAddress, index }) => {
@@ -42,29 +43,46 @@ const SubCollections = ({ address, tokenAddress, index }) => {
 
   const renderData = () => {
 
-return (
-  <>
-    {tokens?.slice(index.prev, index.current)?.map( (token) => (
-      <div className="gallery" key={Math.random()*100}>
-        <Image 
-          src={token.image_url} 
-          width="600" 
-          height="600" 
-        />
-      <div className="desc">{token.name}</div>
-      <Link
-        href={{
-          pathname: "/chatroom/[id]/[comment]",
-          query: {
-            image_url: token.image_url,
-            name: token.name
-          }
-        }}
-        as={`/chatroom/${tokenAddress}/${token.token_id}`}
-      >
-        <Button>Chat Room</Button>
-      </Link>    
-      </div> ))}
+  return (
+    <>
+      <Grid container spacing={0} >
+        {tokens?.slice(index.prev, index.current)?.map( (token) => (
+          <Grid item xs={6} >
+            <div className="profile_cards">
+              <div className="profile_card ">
+                <img 
+                  className="profile_card__image "
+                  src={token.image_url}  
+                />
+                <div className="profile_card__overlay ">
+                  <div className="profile_card__header ">
+                    <svg className="profile_card__arc " xmlns="http://www.w3.org/2000/svg "><path /></svg>
+                    <img className="profile_card__thumb " src="https://devforum.roblox.com/uploads/default/original/4X/c/5/f/c5fc157827728c0030ce41031b1deeb3826b751e.png " alt=" " />
+                    <div className="profile_card__header-text ">
+                      <h3 className="profile_card__title ">{token.name}</h3>
+                      <span className="profile_card__status ">1 hour ago</span>
+                    </div>
+                  </div>
+                  <p className="profile_card__description ">
+                  <Link
+                    href={{
+                      pathname: "/chatroom/[id]/[comment]",
+                      query: {
+                        image_url: token.image_url,
+                        name: token.name
+                      }
+                    }}
+                    as={`/chatroom/${tokenAddress}/${token.token_id}`}
+                  >
+                    <Button>Chat Room</Button>
+                  </Link> 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Grid>
+        ))}
+        </Grid>
   </>
 )
 }
