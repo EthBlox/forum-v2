@@ -1,0 +1,9 @@
+.theConvoSpace {
+    display: block;
+    margin: 40px auto;
+}
+
+.chatHeader {
+    text-align: center;
+    margin: 15px;
+}

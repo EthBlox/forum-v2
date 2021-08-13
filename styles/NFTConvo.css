@@ -1,0 +1,30 @@
+.nft-page-container {
+    margin: auto;
+    margin-top: 25px;
+    width: 70%;
+    padding: 10px;
+    display: flex;
+}
+
+.nft-image-container img {
+    width: 300px;
+    height: auto;
+}
+
+.nft-info-container {
+    margin-left: 10%;
+    margin-top: 10px;
+}
+
+.nft-h3 {
+    margin: 0px;
+    margin-bottom: 25px;
+    color: white;
+}
+
+.theConvoSpace {
+    display: block;
+    margin: 40px auto;
+    width: 70%;
+    height: 300px;
+}

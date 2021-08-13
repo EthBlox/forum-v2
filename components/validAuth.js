@@ -144,6 +144,7 @@ const generateSignature = async (signer) => {
 
 const ValidateAuth = () => {
   const [connected, setConnected] = useState(false);
+  const [signature, setSignature] = useState(false);
 
   const loginHandler = async () => {
     const web3Modal = new Web3Modal({
@@ -169,26 +170,83 @@ const ValidateAuth = () => {
   const getToken = (timestamp, signerAddress, signature) => {
     const options = {
       method: 'POST',
-      url: 'http://theconvo.space/api/auth?apikey=CONVO',
-      headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+      url: 'http://theconvo.space/api/auth',
+      params: {apikey: 'CONVO'},
+      headers: {'Content-Type': 'application/json'},
       data : {
-        "signerAddress":{signerAddress},
-        "signature":{signature},
-        "timestamp": {timestamp}
+        signerAddress:{signerAddress},
+        signature:{signature},
+        timestamp: {timestamp}
       }
     };
+  
   
     axios.request(options).then(function (response) {
       console.log(response.data);
     }).catch(function (error) {
       console.error(error);
     });
-  }
+  };
 
+  const getThreads = async () => {
+    const options = {
+      method: 'GET',
+      url: 'https://theconvo.space/api/threads',
+      params: {apikey: 'CONVO'},
+      headers: {'Content-Type': 'application/json'}
+    };
+
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  };
+
+
+  const getComments = async () => {
+    const options = {
+      method: 'GET',
+      url: 'https://theconvo.space/api/comments',
+      params: {apikey: 'CONVO'},
+      headers: {'Content-Type': 'application/json'}
+    };
+
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  };
+
+
+  const createComment = async () => {
+    const options = {
+      method: 'POST',
+      url: 'https://theconvo.space/api/comments',
+      params: {apikey: 'CONVO'},
+      headers: {'Content-Type': 'application/json'},
+      data: {
+        token: 'string',
+        signerAddress: 'string',
+        comment: 'string',
+        url: 'string',
+        threadId: 'string'
+      }
+    };
+    axios.request(options).then(function (response) {
+      console.log(response.data);
+    }).catch(function (error) {
+      console.error(error);
+    });
+  };
 
   return (
     <>
     <Button onClick={loginHandler} color='#00AEE9' size='large' >{!connected ? <p>Login</p> : <p>Logged in</p>}</Button>
+    <Button onClick={getThreads}>click</Button>
+    <Button onClick={getComments}>click</Button>
+    <Button onClick={createComment}>click</Button>
     </>
   );
 };

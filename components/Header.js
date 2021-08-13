@@ -67,6 +67,9 @@ const useStyles = makeStyles((theme) => ({
     },
     fontSize: '2rem',
     marginRight: "2vw",
+    '&:hover': {
+      cursor: "pointer",
+    },
   },
   search: {
     position: 'relative',
@@ -159,12 +162,12 @@ export default function Header() {
       <Link href="/profile">
         <a className={classes.dropdownLink}><MenuItem onClick={handleMenuClose}>My Profile</MenuItem></a>
       </Link>
-      <Link href="/collections">
+      {/* <Link href="/collections">
         <a className={classes.dropdownLink} ><MenuItem onClick={handleMenuClose}>My Collections</MenuItem></a>
-      </Link>
-      <Link href="/settings">
+      </Link> */}
+      {/* <Link href="/settings">
         <a className={classes.dropdownLink}><MenuItem onClick={handleMenuClose}>Settings</MenuItem></a>
-      </Link>
+      </Link> */}
     </Menu>
   );
 
@@ -192,7 +195,7 @@ export default function Header() {
         </IconButton>
         <p className={classes.menuText} >Chatrooms</p>
       </MenuItem>    
-      <MenuItem>
+      {/* <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
             <MailIcon />
@@ -207,7 +210,7 @@ export default function Header() {
           </Badge>
         </IconButton>
         <p className={classes.menuText} >Notifications</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           aria-label="account of current user"
@@ -228,9 +231,11 @@ export default function Header() {
       <div className={classes.grow}>
         <AppBar position="static" className={classes.appBar}>
           <Toolbar>
+          <Link href="/" variant="button" color="textPrimary">
             <Typography className={classes.title} variant="h6" noWrap>
               ETHBlox
             </Typography>
+          </Link>
             <nav>
               <Link href="/discover" variant="button" color="textPrimary">
                 <a><span className={classes.link}>Discover</span></a>
@@ -239,7 +244,7 @@ export default function Header() {
                 <a><span className={classes.link}>Chat Rooms</span></a>
               </Link>
             </nav>
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -251,10 +256,10 @@ export default function Header() {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </div>
+            </div> */}
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="show 4 new mails" color="inherit" className={classes.buttonIcon}>
+              {/* <IconButton aria-label="show 4 new mails" color="inherit" className={classes.buttonIcon}>
                 <Badge badgeContent={4} color="secondary">
                   <MailIcon />
                 </Badge>
@@ -263,7 +268,7 @@ export default function Header() {
                 <Badge badgeContent={17} color="secondary">
                   <NotificationsIcon />
                 </Badge>
-              </IconButton>
+              </IconButton> */}
               <IconButton
                 edge="end"
                 aria-label="account of current user"

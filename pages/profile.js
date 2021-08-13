@@ -13,6 +13,8 @@ import Box from '@material-ui/core/Box';
 import Loading from '../components/Loading';
 import Collections from '../components/Collections';
 import SubCollections from '../components/SubCollections';
+import PolyCollections from '../components/PolyCollections';
+import SubPolyCollections from '../components/SubPolyCollections';
 import Pagination from '@material-ui/lab/Pagination';
 import { Button } from 'ui-neumorphism';
 
@@ -80,12 +82,42 @@ const useStyles = makeStyles({
 
 const Profile = () => {
   const classes = useStyles();
+  // default ethereum
+  const [chain, setChain] = useState(false);
+
   const [value, setValue] = useState(0);
   const [profile, setProfile] = useState(false);
   const [address, setAddress] = useState(null);
-  const [collections, setCollections] = useState(null);
-  const [pageCollections, setPageCollections] = useState(collections);
+
+  const pageSize = 10;
+
+  // const [pageCollections, setPageCollections] = useState(collections);
+
+
+
+  /*
+      MAIN FUNCTIONS
+  */
+
+  const handleTabChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  const connectionHandler = (connected, address) => {
+    setAddress(address);
+    setProfile(connected);
+  };
+
+
+
+  /*
+      ETHEREUM COLLECTION PAGE
+  */
+
+
+  const [selectedAddress, setSelectedAddress] = useState(null);
   const [subTab, setSubTab] = useState(false);
+  const [collections, setCollections] = useState(null);
   const [page, setPage] = useState(1);
   const [subPage, setSubPage] = useState(1);
   const [pageRange, setPageRange] = useState({
@@ -96,12 +128,12 @@ const Profile = () => {
     prev: 0,
     current: 9
   });
-  const [selectedAddress, setSelectedAddress] = useState(null);
   let totalPageCount;
-  const pageSize = 10;
+
   if (collections !== null) {
     totalPageCount = Math.ceil(collections.length / pageSize);
   }
+
   const handlePageChange = (event, value) => {
     console.log(value);
     setPage(value);
@@ -119,18 +151,8 @@ const Profile = () => {
       current: 10 * value
     })
   };
-  console.log(collections);
 
-  const handleTabChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const connectionHandler = (connected, address) => {
-    setAddress(address);
-    setProfile(connected);
-  };
-
-  const collectionsLoadedHander = (collections) => {
+  const collectionsLoadedHandler = (collections) => {
     setCollections(collections);
     console.log(collections.length);
   };
@@ -139,12 +161,78 @@ const Profile = () => {
     console.log(subTab);
     setSubTab(!subTab);
   }
-  
+
   const getSelectedAddress = (address) => {
     setSelectedAddress(address);
     collectionsHandler();
     console.log(address);
   }
+
+  const switchEthHandler = () => {
+    setChain(false);
+  }
+
+
+  /*
+      POLYGON COLLECTION PAGE
+  */
+
+  const [polySelectedAddress, setPolySelectedAddress] = useState(null);
+  // const [polySubTab, setPolySubTab] = useState(false);
+  const [polyCollections, setPolyCollections] = useState(null);
+  const [polyPage, setPolyPage] = useState(1);
+  const [subPolyPage, setSubPolyPage] = useState(1);
+  const [polyPageRange, setPolyPageRange] = useState({
+    prev: 0,
+    current: 9
+  });
+  const [subPolyPageRange, setSubPolyPageRange] = useState({
+    prev: 0,
+    current: 9
+  });
+  let totalPolyPageCount;
+
+  if (polyCollections !== null) {
+    totalPolyPageCount = Math.ceil(polyCollections.length / pageSize);
+  }
+
+  const handlePolyPageChange = (event, value) => {
+    console.log(value);
+    setPolyPage(value);
+    setPolyPageRange({
+      prev: 10 * (value - 1),
+      current: 10 * value
+    })
+  };
+
+  const handlePolySubPageChange = (event, value) => {
+    console.log(value);
+    setSubPolyPage(value);
+    setSubPolyPageRange({
+      prev: 10 * (value - 1),
+      current: 10 * value
+    })
+  };
+
+  const polyCollectionsLoadedHandler = (collections) => {
+    setPolyCollections(collections);
+    console.log(collections.length);
+  };
+
+  const polyCollectionsHandler = () => {
+    console.log(subTab);
+    setSubTab(!subTab);
+  }
+
+  const getPolySelectedAddress = (address) => {
+    setPolySelectedAddress(address);
+    polyCollectionsHandler();
+    console.log(address);
+  }
+
+  const switchPolyHandler = () => {
+    setChain(true);
+  };
 
   const collectionsTabContent = (
     <>
@@ -153,25 +241,45 @@ const Profile = () => {
       <div>
         <div className="tabcontent" style={{display: "block"}} >
           <h2>Click on a Collection to view your NFTs</h2>
-          <Button className={classes.switchButton} >Ethereum</Button>
-          <Button className={classes.switchButton} >Polygon</Button>
+          <Button className={classes.switchButton} onClick={switchEthHandler} >Ethereum</Button>
+          <Button className={classes.switchButton} onClick={switchPolyHandler} >Polygon</Button>
           <div className="collection-gallery" >
-            <Collections 
+            { !chain ? <Collections 
               address={address} 
               loadCollections={collections} 
-              collectionsLoaded={collectionsLoadedHander} 
+              collectionsLoaded={collectionsLoadedHandler} 
               index={pageRange} 
               onClick={getSelectedAddress}
-            />
+            /> :
+            <>
+              <PolyCollections 
+                address={address}
+                loadCollections={polyCollections} 
+                collectionsLoaded={polyCollectionsLoadedHandler} 
+                index={polyPageRange} 
+                onClick={getPolySelectedAddress}
+              />
+            </>
+            }
           </div>
         </div>
+        { !chain && 
         <Pagination 
           className={classes.paginationLoc} 
           count={totalPageCount} 
           page={page} 
           onChange={handlePageChange} 
           size="large"
-        />
+        /> }
+        {chain && 
+        <Pagination 
+          className={classes.paginationLoc} 
+          count={totalPolyPageCount} 
+          page={polyPage} 
+          onChange={handlePolyPageChange} 
+          size="large"
+        />    
+        }
       </div>
       </>
       :
@@ -180,21 +288,43 @@ const Profile = () => {
           <div className="tabcontent" style={{display: "block"}}>
             <Button onClick={collectionsHandler}>Back</Button>
             <div className="collection-gallery">
-              <SubCollections 
+              { 
+                !chain ?
+                <SubCollections 
                 address={address} 
                 tokenAddress={selectedAddress} 
                 key={Math.round(Math.random()*100)} 
                 index={subPageRange} 
-              />
+              /> 
+              :
+
+                <SubPolyCollections 
+                  tokenAddress={polySelectedAddress}
+                  key={Math.round(Math.random()*100)} 
+                  collections={polyCollections}
+                  index={subPolyPageRange} 
+                />
+              }
             </div>
           </div> 
-          <Pagination 
+          { !chain &&
+            <Pagination 
             className={classes.paginationLoc} 
             count={totalPageCount} 
             page={subPage} 
             onChange={handleSubPageChange} 
             size="large"
           />
+          }
+          {chain &&
+          <Pagination 
+            className={classes.paginationLoc} 
+            count={totalPolyPageCount} 
+            page={subPolyPage} 
+            onChange={handlePolySubPageChange} 
+            size="large"
+          />
+          }
         </div>
       </>
       }
@@ -280,7 +410,7 @@ const Profile = () => {
             </div>
             <div className="profile-text-container">
                 <div className="username">
-                    <h4>{address}</h4>
+                    <h4>{ address.slice(0,6) + '...' + address.slice(-4) } </h4>
                 </div>
                 <div className="profile-dot-divider">
                     <h4>•</h4>

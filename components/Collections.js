@@ -12,6 +12,8 @@ import { getTokenMetaData } from '../pages/api/queries';
 import { getCollectionsData } from '../pages/api/queries';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from 'ui-neumorphism';
+
 
 const Collections = ({ address, loadCollections, collectionsLoaded, index, onClick }) => {
 
@@ -48,7 +50,6 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
 
 
   const renderData = () => {
-
     return (
       <>
         {collections?.slice(index.prev, index.current)?.map( (collection) => (
@@ -61,6 +62,18 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
                 contract={collection.primary_asset_contracts[0].address} 
               />
           <div className="desc">{collection.name}</div>
+          <Link
+            href={{
+              pathname: "/chatroom/[id]",
+              query: {
+                image_url: collection.featured_image_url,
+                name: collection.name
+              }
+            }}
+            as={`/chatroom/${collection.primary_asset_contracts[0].address}`}
+          >
+            <Button>Chat Room</Button>
+          </Link>
         </div> ))}
 
       </>

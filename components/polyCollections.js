@@ -2,28 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { 
   getNFTTokenIDs, 
   getExternalNFTMetadata, 
-  getHistoricalPortfolioValueOverTime,
   getTokenBalancesForAddress
 } from '../pages/api/classA';
 import {
   MATIC
 } from '../pages/api/constants';
-import { getTokenMetaData } from '../pages/api/opensea';
 import Image from 'next/image';
+import Default from '../public/assets/comingSoon.gif';
+import getImage from './getImage';
+import { Button } from 'ui-neumorphism';
+import Link from 'next/link';
 
-const Collections = ({ address, collectionsLoaded, loaded, importCollections }) => {
+
+const PolyCollections = ({ address, collectionsLoaded, onClick }) => {
 
   const [collections, setCollections] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const queryAddress = address;
+  const demoAddress = '0xbba2379F5cc9A2f248C5Cf18aD72379AE2478F42';
   const chainID = MATIC;
-
-  const getHistoricalPortfolioValueOverTimeHandler = async () => {
-    console.log('running');
-    const res = await getHistoricalPortfolioValueOverTime(chainID, queryAddress, {});
-    console.log(res);
-    console.log('completed');
-  };
+  const DefaultImg = false;
 
   const getExternalNFTMetadataHandler = async () => {
     console.log('running');
@@ -37,56 +35,14 @@ const Collections = ({ address, collectionsLoaded, loaded, importCollections }) 
     console.log('completed');
   };
 
-  const getTokenMetaDataHandler = async (collections) => {
-    console.log('running');
-    for (let i=0; i<collections.length; i++) {
-      collections[i].contract_address
-    } 
-    const res = await getTokenMetaData(contractAddress, tokenID);
-    console.log(res);
-    console.log('completed');
-  }
-
-
-
-  // const getTokenBalancesForAddressHandler = async () => {
-  //   console.log('running');
-    // const res = await getTokenBalancesForAddress(1, '0x7E99611Cf208CB097497a59b3FB7Cb4dFd115Ea9', {
-    //   nft: true,
-    //   "no-nft-fetch": true,
-    //   match : {
-    //     "$or":[
-    //           {
-    //             "supports_erc":
-    //               {"$elemmatch":"erc721"}
-    //           },
-    //           {
-    //             "supports_erc":
-    //               {"$elemmatch":"erc1155"}
-    //           }
-    //        ]
-    //   }
-    // });
-  //   console.log('completed');
-  //   let arr = res.data.items;
-  //   let collections = [];
-  //   for (let i=0; i<arr.length; i++) {
-  //     if (arr[i]?.supports_erc?.length > 1) {
-  //       collections.push(arr[i]);
-  //     }
-  //   }
-  //   console.log(collections);
-  //   console.log('completed');
-  //   return collections;
-  // };
-
   useEffect(() => {
     const createCollection = async () => {
       setIsLoading(true);
       console.log('running');
-      const res = await getTokenBalancesForAddress(1, '0x7E99611Cf208CB097497a59b3FB7Cb4dFd115Ea9', {
+      const collections = [];
+      const res = await getTokenBalancesForAddress(chainID, demoAddress, {
         nft: true,
-        "no-nft-fetch": true,
+        'no-nft-fetch': true,
         // match : {
         //   "$or":[
         //         {
@@ -101,30 +57,29 @@ const Collections = ({ address, collectionsLoaded, loaded, importCollections }) 
         // }
       });
       console.log('completed');
-      let arr = res.data.items;
-      let collections = [];
-      for (let i=0; i<arr.length; i++) {
-        if (arr[i]?.supports_erc?.length > 1) {
-          collections.push(arr[i]);
+      const tokens = res.data.items;
+      console.log(tokens);
+      for (let i=0; i<tokens.length; i++) {
+        if (tokens[i].supports_erc.includes("erc721") && tokens[i].balance != null){
+          collections.push(tokens[i]);
         }
       }
-      console.log(collections);
-      console.log('completed');
+      console.log(collections)
       setCollections(collections);
-      getTokenMetaDataHandler(collections);
-      console.log(collections[0].logo_url);
-      collectionsLoaded(true, collections);
-      return collections;
+      collectionsLoaded(collections);
     };
-    if (collections == null && !loaded) {
+    if (collections == null) {
       createCollection();
       setIsLoading(false);
-    } else {
-      setCollections(importCollections);
     }
-
   }, []);
 
+  const clickedCollection = (e) => {
+    console.log('hello');
+    const selectedAddress = e.currentTarget.getAttribute('contract');
+    console.log(selectedAddress);
+    onClick(selectedAddress);
+  };
 
 
   const renderData = () => {
@@ -133,16 +88,32 @@ const Collections = ({ address, collectionsLoaded, loaded, importCollections }) 
       <>
         {collections?.map( (collection) => (
           <div className="gallery" key={Math.round(Math.random()*100)}>
-            <a target="_blank" href="../images/SupDuck.png">
-            <Image src={collection.logo_url} width="600" height="400" />
-            </a>
+            <Image 
+              // src={collection.logo_url == "" ? getImage(collection?.contract_address, collection?.nft_data[0]?.token_id) : Default}
+              src = {Default} 
+              width="600" 
+              height="400" 
+              onClick={clickedCollection} 
+              contract={collection.contract_address} 
+            />
           <div className="desc">{collection.contract_name}</div>
+          <Link
+            href={{
+              pathname: "/chatroom/[id]",
+              query: {
+                image_url: "",
+                name: collection.contract_name
+              }
+            }}
+            as={`/chatroom/${collection.contract_address}`}
+          >
+          <Button>Chat Room</Button>
+          </Link>   
         </div> ))}
-
       </>
     )
   }
   return renderData();
 }
 
-export default Collections;
+export default PolyCollections;

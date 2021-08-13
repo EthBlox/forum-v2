@@ -11,6 +11,7 @@ import {
 import { getTokenMetaData } from '../pages/api/queries';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Button } from 'ui-neumorphism';
 
 
 const SubCollections = ({ address, tokenAddress, index }) => {
@@ -51,7 +52,19 @@ return (
           height="600" 
         />
       <div className="desc">{token.name}</div>
-    </div> ))}
+      <Link
+        href={{
+          pathname: "/chatroom/[id]/[comment]",
+          query: {
+            image_url: token.image_url,
+            name: token.name
+          }
+        }}
+        as={`/chatroom/${tokenAddress}/${token.token_id}`}
+      >
+        <Button>Chat Room</Button>
+      </Link>    
+      </div> ))}
   </>
 )
 }

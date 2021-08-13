@@ -127,6 +127,7 @@ div.gallery {
 
 div.gallery:hover {
     border: 1px solid #777;
+    cursor: pointer;
 }
 
 div.gallery img {

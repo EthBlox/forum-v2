@@ -6,6 +6,9 @@ import theme from '../components/theme';
 import '../styles/index.css';
 import '../styles/profile.css';
 import '../styles/Footer.css';
+import '../styles/GeneralConvo.css';
+import '../styles/NFTConvo.css';
+import '../styles/ChatRoom.css';
 import 'ui-neumorphism/dist/index.css';
 
 

@@ -30,11 +30,11 @@ const Showcase = () => {
             <ul className="cards" >
               <li>
                 <a href=" " className="card ">
-                  <img src="../images/NFT-Convo.png " className="card__image " alt=" " />
+                  <img src="../assets/NFT-Convo.png" className="card__image " alt=" " />
                   <div className="card__overlay ">
                       <div className="card__header ">
                           <svg className="card__arc " xmlns="http://www.w3.org/2000/svg "><path /></svg>
-                          <img className="card__thumb " src="../images/world_greatest_dictator.jpeg " alt=" " />
+                          <img className="card__thumb " src="../assets/CyberKong.png" alt=" " />
                           <div className="card__header-text ">
                               <h3 className="card__title ">Robert Mugabe</h3>
                               <span className="card__status ">1 hour ago</span>
