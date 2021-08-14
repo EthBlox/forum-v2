@@ -240,7 +240,7 @@ export default function Header() {
               <Link href="/discover" variant="button" color="textPrimary">
                 <a><span className={classes.link}>Discover</span></a>
               </Link>
-              <Link href="/chat" variant="button" color="textPrimary">
+              <Link href="/chatroom" variant="button" color="textPrimary">
                 <a><span className={classes.link}>Chat Rooms</span></a>
               </Link>
             </nav>

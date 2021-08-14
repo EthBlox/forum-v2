@@ -54,7 +54,7 @@ const Home = () => {
       <>
         <Header />
           <Grid container spacing={0} className={classes.gridContainer}>
-            <Grid item xs={6}>
+            <Grid item xs={6} className="container-cta">
                 <h1>Join a community today!</h1>
                 <Link href='/discover' >
                   <button className={classes.btn} >Explore</button>
@@ -64,7 +64,7 @@ const Home = () => {
                 </Link>
             </Grid>
             <Grid item xs={6}>
-            <Image src={NFTGif} width="480 " height="480 " frameBorder="0 " className="giphy-embed gif "/>
+            <img src="../assets/nft.gif" width="480 " height="480 " frameBorder="0 " className="gif "/>
             </Grid>
           </Grid>
           <Showcase />

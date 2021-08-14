@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { library } from '@fortawesome/fontawesome-svg-core'
+import Link from 'next/link';
 
 library.add(fab);
 const useStyles = makeStyles((theme) => ({
@@ -52,12 +53,21 @@ const Footer = () => {
             <Grid item xs={4} className={classes.gridItem}>
               <h6>Categories</h6>
               <ul className="footer-links ">
-                <li><a href="# ">veritatis</a></li>
-                <li><a href="# ">dolorem </a></li>
-                <li><a href="# ">fugiat</a></li>
-                <li><a href="# ">pariatur</a></li>
-                <li><a href="# ">repellat</a></li>
-                <li><a href="# ">asperiores </a></li>
+                <li>
+                  <Link href='/' >
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/Discover' >
+                    Discover
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/profile' >
+                    Get Started
+                  </Link>
+                </li>
               </ul>
             </Grid>
             <Grid item xs={4} className={classes.gridItem}>

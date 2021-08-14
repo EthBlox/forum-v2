@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   root: {
     display: "flex",
     width: '100%',
-    height: "100ch",
+    height: "80ch",
     alignItems: "center",
     justify: "center",
     marginLeft: '35%',
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
   loadingContainer: {
     position: "absolute",
-    top: "35%",
+    top: "40%",
     left: "0", 
     right: "0",
     bottom: "0",

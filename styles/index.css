@@ -91,6 +91,11 @@ h3 {
     }
 }
 
+.container-cta h1 {
+    padding-top: 10%;
+    text-align: left;
+}
+
 .btn {
     height: 50px;
     width: 30%;
@@ -110,9 +115,7 @@ h3 {
 }
 
 .gif {
-    margin-left: auto;
     transform: rotate(10deg);
-    position: absolute;
 }
 
 @media (max-width: 1028px) {

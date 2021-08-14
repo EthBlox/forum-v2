@@ -26,7 +26,7 @@ const NFTConvo = (desc) => {
       <div className="nft-page-container">
         <div className="nft-image-container">
             <a className="#">
-                <Image  src = {image == "" ? Default : image} width={800} height={600} />
+                <img  src = {image == "" ? Default : image} width={800} height={600} />
             </a>
         </div>
         <div className="nft-info-container">
