@@ -81,10 +81,8 @@ h3 {
 }
 
 .team-member img {
-    display:block;
-    margin:auto;
-    height: 20vh;
-    width: auto;
+    display: block;
+    margin: auto;
 }
 
 .team-member p {

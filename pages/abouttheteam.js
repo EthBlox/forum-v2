@@ -23,19 +23,19 @@ const Home = () => {
             <h1>Meet the Team</h1>
             <ul class="team">
               <li class="team-member">
-                <img src="../assets/chebLogo.jpeg" class="whiteborder" />
+                <img src="../assets/chebLogo.jpeg" class="whiteborder" width="300px" height="300px"/>
                 <h3>Will</h3>
                 <h4>Co-Founder, Developer</h4>
                 <p>cheb@ethblox.social</p>
               </li>
               <li class="team-member">
-                <img src="../assets/meat.png" class="blackborder" />
+                <img src="../assets/meat.png" class="blackborder" width="300px" height="300px"/>
                 <h3>sendmeat</h3>
                 <h4>Co-Founder, Developer</h4>
                 <p>sendmeat@ethblox.social</p>
               </li>
               <li class="team-member">
-                <img src="../assets/CyberKong.png" class="whiteborder" />
+                <img src="../assets/CyberKong.png" class="whiteborder" width="300px" height="300px" />
                 <h3>palm</h3>
                 <h4>Co-Founder, Developer</h4>
                 <p>palm@ethblox.social</p>
