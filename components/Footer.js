@@ -47,8 +47,7 @@ const Footer = () => {
           <Grid container spacing={0} >
             <Grid item xs={4} className={classes.gridItem}>
               <h6>About</h6>
-              <p>officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus inventore veritatis et quasi architecto adipisci velit, sed quia
-                  non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. </p>
+              <p>Ethblox is a social platform for users to share their NFTs, join communities, and make friends—with all posts and communication hosted on IPFS.</p>
             </Grid>
             <Grid item xs={4} className={classes.gridItem}>
               <h6>Categories</h6>
@@ -64,32 +63,32 @@ const Footer = () => {
             <Grid item xs={4} className={classes.gridItem}>
               <h6>Quick Links</h6>
               <ul className="footer-links ">
-                <li><a href="# ">About Us</a></li>
-                <li><a href="# ">Contact Us</a></li>
-                <li><a href="# ">Contribute</a></li>
-                <li><a href="# ">Privacy Policy</a></li>
-                <li><a href="# ">Sitemap</a></li>
+                <li><a href="# ">About the Team</a></li>
+                <li><a href = "mailto: contact@ethblox.social">Contact Us</a></li>
+                <li><a href="https://github.com/EthBlox/forum-v2" target="_blank">Contribute</a></li>
+                <li><a href="https://ipfs.io/ipfs/QmRmwCTcrBYMrPjzo7S1vxLTcWiBJNTD4hqn1EJHv29mRJ?filename=Screen%20Shot%202021-08-13%20at%2010.59.24%20PM.png" target="_blank">Roadmap</a></li>
+                <li><a href="/privacypolicy">Privacy Policy</a></li>
               </ul>
             </Grid>
           </Grid>
           <hr />
           <Grid container spacing={0} className="footer-socials">
             <Grid item xs={6} className={classes.copyrightItem}>
-              <p>Copyright &copy; 2021 All Rights Reserved
+              <p>&copy; EthBlox Ltd. 2021. All Rights Reserved.
               </p>
             </Grid>
             <Grid item xs={3} >
               <p></p>
             </Grid>
             <Grid item xs={3} >
-                  <a href="#">
-                    <FontAwesomeIcon icon={['fab', 'twitter']} size="3x" className={classes.twitter}/>
+                  <a href="https://twitter.com/0xhashed" target="_blank">
+                    <FontAwesomeIcon icon={['fab', 'twitter']} size="2x" className={classes.twitter}/>
                   </a>
-                  <a href="#">
-                    <FontAwesomeIcon icon={['fab', 'github']} size="3x" className={classes.github}/>
+                  <a href="https://github.com/EthBlox/forum-v2" target="_blank">
+                    <FontAwesomeIcon icon={['fab', 'github']} size="2x" className={classes.github}/>
                   </a>
-                  <a href="#">
-                    <FontAwesomeIcon icon={['fab', 'discord']} size="3x" className={classes.discord}/>
+                  <a href="https://discord.gg/VU5kNNk2PR" target="_blank">
+                    <FontAwesomeIcon icon={['fab', 'discord']} size="2x" className={classes.discord}/>
                   </a>
             </Grid>
           </Grid>

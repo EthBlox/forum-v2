@@ -8,7 +8,7 @@
     line-height: 24px;
     color: #C0FEFC;
     margin-top: 100px;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
     margin-top: calc(5% + 60px);
     bottom: 0;
 }
@@ -16,7 +16,7 @@
 .site-footer hr {
     border-top-color: #fff;
     width: 100%;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     outline: none,
 }
 
@@ -41,6 +41,7 @@
     padding-left: 0;
     list-style: none;
     font-size: 1.2rem;
+    margin-bottom: 20px;
 }
 
 .footer-links li {
