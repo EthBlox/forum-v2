@@ -73,7 +73,7 @@ const Footer = () => {
             <Grid item xs={4} className={classes.gridItem}>
               <h6>Quick Links</h6>
               <ul className="footer-links ">
-                <li><a href="# ">About the Team</a></li>
+                <li><a href="/abouttheteam">About the Team</a></li>
                 <li><a href = "mailto: contact@ethblox.social">Contact Us</a></li>
                 <li><a href="https://github.com/EthBlox/forum-v2" target="_blank">Contribute</a></li>
                 <li><a href="https://ipfs.io/ipfs/QmRmwCTcrBYMrPjzo7S1vxLTcWiBJNTD4hqn1EJHv29mRJ?filename=Screen%20Shot%202021-08-13%20at%2010.59.24%20PM.png" target="_blank">Roadmap</a></li>
