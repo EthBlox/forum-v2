@@ -10,6 +10,7 @@ import '../styles/GeneralConvo.css';
 import '../styles/NFTConvo.css';
 import '../styles/ChatRoom.css';
 import '../styles/privacypolicy.css';
+import '../styles/abouttheteam.css';
 import 'ui-neumorphism/dist/index.css';
 
 
