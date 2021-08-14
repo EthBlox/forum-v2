@@ -20,7 +20,7 @@ const Discover = () => {
               <h3>CyberKongz</h3>
               <img src="../assets/cyberkongzlogo.png" />
               <iframe 
-              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fethblox.on.fleek.co%2Ffrontend%2Fprofile.html%3F&threadId=testchat" 
+              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fwww.ethblox.social%2Fdiscover&threadId=testchat" 
               allowtransparency="true" 
               style={{border: "10px ridge grey"}}
               className="theConvoSpace">
@@ -31,7 +31,7 @@ const Discover = () => {
               <h3>Rabbit College Club</h3>
               <img src="../assets/rabbitcollegeclub.jpeg" />
               <iframe 
-              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fethblox.on.fleek.co%2Ffrontend%2Fprofile.html%3F&threadId=testchat1" 
+              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fwww.ethblox.social%2Fdiscover&threadId=testchat1" 
               allowtransparency="true" 
               style={{border: "10px ridge grey"}}
               className="theConvoSpace">
@@ -49,7 +49,7 @@ const Discover = () => {
               <h3>SupDucks</h3>
               <img src="../assets/supduckslogo.png" />
               <iframe 
-              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fethblox.on.fleek.co%2Ffrontend%2Fprofile.html%3F&threadId=testchat2" 
+              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fwww.ethblox.social%2Fdiscover&threadId=testchat2" 
               allowtransparency="true" 
               style={{border: "10px ridge grey"}}
               className="theConvoSpace">
@@ -60,7 +60,7 @@ const Discover = () => {
               <h3>Bored Ape Yacht Club</h3>
               <img src="../assets/baycbanner.png" />
               <iframe 
-              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fethblox.on.fleek.co%2Ffrontend%2Fprofile.html%3F&threadId=testchat3" 
+              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fwww.ethblox.social%2Fdiscover&threadId=testchat3" 
               allowtransparency="true" 
               style={{border: "10px ridge grey"}}
               className="theConvoSpace">
@@ -71,7 +71,7 @@ const Discover = () => {
               <h3>CryptoPunks</h3>
               <img src="../assets/cryptopunksbanner.png" />
               <iframe 
-              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fethblox.on.fleek.co%2Ffrontend%2Fprofile.html%3F&threadId=testchat4" 
+              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fwww.ethblox.social%2Fdiscover&threadId=testchat4" 
               allowtransparency="true" 
               style={{border: "10px ridge grey"}}
               className="theConvoSpace">
@@ -82,7 +82,7 @@ const Discover = () => {
               <h3>Lazy Lions</h3>
               <img src="../assets/lazylions.jpeg" />
               <iframe 
-              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fethblox.on.fleek.co%2Ffrontend%2Fprofile.html%3F&threadId=testchat5" 
+              src="https://theconvo.space/embed/dt?url=https%3A%2F%2Fwww.ethblox.social%2Fdiscover&threadId=testchat5" 
               allowtransparency="true" 
               style={{border: "10px ridge grey"}}
               className="theConvoSpace">
