@@ -33,6 +33,7 @@ export async function getServerSideProps(context) {
         image_url: context.query.image_url, //pass it to the page props
         name: context.query.name,
         id: context.query.id,
+        chain: context.query.chain
       }
   }
 };

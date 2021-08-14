@@ -53,7 +53,6 @@ const Connect = (props) => {
     }
   };
 
-
   return (
     <>
     <Button onClick={Connection} color='#00AEE9' size='large' >{!connected ? <p>Connect wallet</p> : <p>Connected</p>}</Button>

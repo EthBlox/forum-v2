@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Kongz from '../public/assets/CyberKong.png';
 import Default from '../public/assets/comingSoon.gif';
+import { NFTStorage, File } from 'nft.storage';
 
 
 const NFTConvo = (desc) => {
@@ -17,26 +18,67 @@ const NFTConvo = (desc) => {
   } else {
     threadID = "" + desc.desc.id + desc.desc.comment;
   }
+  const chain = desc.desc.chain;
+  let openSeaURL = "https://opensea.io/assets/";
+
+  if (chain == "1") {
+    if (desc.desc.comment != undefined ) {
+      openSeaURL = openSeaURL + desc.desc.id + '/' + desc.desc.comment;
+    } 
+  } else {
+    openSeaURL = openSeaURL + 'matic' + '/'
+    if (desc.desc.comment != undefined ) {
+      openSeaURL = openSeaURL + desc.desc.id + '/' + desc.desc.comment;    
+    }
+  };
+
+
   console.log(desc.desc.comment);
   console.log(desc.desc.id)
   console.log(threadID)
   const chatRoomLink = `${URL}${threadID}`;
+
+
+  const apiKey  = process.env.NEXT_PUBLIC_NFT_STORAGE;
+  const client = new NFTStorage({ token: apiKey })
+
+  const metadata = await client.store({
+    name: 'Pinpie',
+    description: 'Pin is not delicious beef!',
+    image: new File([/* data */], 'pinpie.jpg', { type: 'image/jpg' })
+  })
+  console.log(metadata.url)
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="nft-page-container">
         <div className="nft-image-container">
-            <a className="#">
-                <img  src = {image == "" ? Default : image} width={800} height={600} />
-            </a>
+          <a className="#">
+            <img  src = {image == "" ? Default : image} width={800} height={600} />
+          </a>
         </div>
         <div className="nft-info-container">
-            <div className="nft-name">
-                <h3 className="nft-h3">{name}</h3>
-            </div>
-            <div className="nft-description">
-                <p>this is a very cool nft and i really like it!!!! :D</p>
-                <p>Idk what other info would go here yet.</p>
-            </div>
+          <div className="nft-name">
+              <h3 className="nft-h3">{name}</h3>
+          </div>
+          <div className="nft-description">
+            <p>this is a very cool nft and i really like it!!!! :D</p>
+            <p>Idk what other info would go here yet.</p>
+            <Link href={openSeaURL}>
+              For more information head to OpenSea
+            </Link>
+          </div>
         </div>
       </div>
       <div className="nft-comments-container">

@@ -109,7 +109,9 @@ const PolyCollections = ({ address, collectionsLoaded, index, onClick }) => {
                     <img className="profile_card__thumb " src="https://devforum.roblox.com/uploads/default/original/4X/c/5/f/c5fc157827728c0030ce41031b1deeb3826b751e.png " alt=" " />
                     <div className="profile_card__header-text ">
                       <h3 className="profile_card__title ">{collection.contract_name}</h3>
-                      <span className="profile_card__status ">1 hour ago</span>
+                      <span className="profile_card__status ">
+                        {collection.contract_address.slice(0,6) + '...' + collection.contract_address.slice(-4)}
+                      </span>
                     </div>
                   </div>
                   <p className="profile_card__description ">
@@ -118,7 +120,8 @@ const PolyCollections = ({ address, collectionsLoaded, index, onClick }) => {
                       pathname: "/chatroom/[id]",
                       query: {
                         image_url: "",
-                        name: collection.contract_name
+                        name: collection.contract_name,
+                        chain: MATIC
                       }
                     }}
                     as={`/chatroom/${collection.contract_address}`}

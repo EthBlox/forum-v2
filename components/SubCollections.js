@@ -64,7 +64,6 @@ const SubCollections = ({ address, tokenAddress, index }) => {
                       <img className="profile_card__thumb " src="https://devforum.roblox.com/uploads/default/original/4X/c/5/f/c5fc157827728c0030ce41031b1deeb3826b751e.png " alt=" " />
                       <div className="profile_card__header-text ">
                         <h3 className="profile_card__title ">{token.name}</h3>
-                        <span className="profile_card__status ">1 hour ago</span>
                       </div>
                     </div>
                     <p className="profile_card__description ">
@@ -73,7 +72,8 @@ const SubCollections = ({ address, tokenAddress, index }) => {
                         pathname: "/chatroom/[id]/[comment]",
                         query: {
                           image_url: token.image_url,
-                          name: token.name
+                          name: token.name,
+                          chain: ETHEREUM
                         }
                       }}
                       as={`/chatroom/${tokenAddress}/${token.token_id}`}

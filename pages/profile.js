@@ -23,6 +23,7 @@ import {
   ETHEREUM,
   MATIC
 } from '../pages/api/constants';
+import SearchBar from '../components/SearchBar';
 
 
 
@@ -116,6 +117,12 @@ const Profile = () => {
     setAddress(address);
     setProfile(connected);
   };
+
+  const searchHandler = (connected, address) => {
+    setAddress(address);
+    setProfile(connected);
+  };
+
 
 
   // const TokenBal = async (address) => {
@@ -475,9 +482,13 @@ const Profile = () => {
                 justifyContent="center"
                 style={{ minHeight: '53vh' }}
               >
-                <Grid item xs={3}>
+                <Grid item xs={6}>
                   <Connect onConnect={connectionHandler} />
                 </Grid>   
+                <Grid item xs={6}>
+                  <SearchBar onSearch={searchHandler}/>
+                </Grid>   
+                
               </Grid> 
             </>
             :

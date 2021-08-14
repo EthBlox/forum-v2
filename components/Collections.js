@@ -31,6 +31,12 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
       console.log('running');
       console.log(queryAddress);
       const collections = await getCollectionsData(queryAddress);
+      for (let i=0; i<collections.length; i++) {
+        if (collections[i].primary_asset_contracts.length == 0) {
+          collections.splice(i, 1);
+          }
+        }
+      
       console.log(collections);
       console.log('completed');
       setCollections(collections);
@@ -66,7 +72,7 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
               <div className="profile_card ">
                 <img 
                   className="profile_card__image "
-                  src={collection.featured_image_url} 
+                  src={collection.featured_image_url == null ? collection.image_url : collection.featured_image_url} 
                   onClick={clickedCollection} 
                   contract={collection.primary_asset_contracts[0].address} 
                 />
@@ -76,7 +82,9 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
                     <img className="profile_card__thumb " src="https://devforum.roblox.com/uploads/default/original/4X/c/5/f/c5fc157827728c0030ce41031b1deeb3826b751e.png " alt=" " />
                     <div className="profile_card__header-text ">
                       <h3 className="profile_card__title ">{collection.name}</h3>
-                      <span className="profile_card__status ">1 hour ago</span>
+                      <span className="profile_card__status ">
+                        {collection.primary_asset_contracts[0].address.slice(0,6) + '...' + collection.primary_asset_contracts[0].address.slice(-4)}
+                      </span>
                     </div>
                   </div>
                   <p className="profile_card__description ">
@@ -85,7 +93,8 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
                       pathname: "/chatroom/[id]",
                       query: {
                         image_url: collection.featured_image_url,
-                        name: collection.name
+                        name: collection.name,
+                        chain: ETHEREUM
                       }
                     }}
                     as={`/chatroom/${collection.primary_asset_contracts[0].address}`}
