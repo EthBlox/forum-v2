@@ -10,6 +10,7 @@ import Default from '../public/assets/comingSoon.gif';
 import { Button } from 'ui-neumorphism';
 import Link from 'next/link';
 import Grid from '@material-ui/core/Grid';
+import Loading from '../components/Loading';
 
 
 const SubCollections = ({ tokenAddress, collections, index }) => {
@@ -18,10 +19,12 @@ const SubCollections = ({ tokenAddress, collections, index }) => {
   console.log(collections);
   const [ nfts, setNFTs] = useState(null);
   const [name, setName] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const createTokens = async (nftData) => {
       console.log('running');
+      setIsLoading(true)
       let nftMeta = [];
       for (let i=0; i<nftData.length; i++) {
         console.log(nftData[i].token_id);
@@ -30,6 +33,8 @@ const SubCollections = ({ tokenAddress, collections, index }) => {
       };
       console.log(nftMeta)
       setNFTs(nftMeta);
+      setIsLoading(false)
+
     };
     if (nfts == null) {
       console.log('hi')
@@ -54,30 +59,12 @@ const SubCollections = ({ tokenAddress, collections, index }) => {
 
 
   const renderData = () => {
+    if (isLoading) {
+      return <Loading />
+    }
 
     return (
       <>
-        {/* {nfts?.slice(index.prev, index.current)?.map( (nft) => (
-          <div className="gallery" key={Math.random()*100}>
-            <Image 
-              src={Default } 
-              width="600" 
-              height="600" 
-            />
-          <div className="desc">{name + ' #' + nft[0].token_id}</div>
-          <Link
-            href={{
-              pathname: "/chatroom/[id]/[comment]",
-              query: {
-                image_url: "",
-                name: name + " #" + nft[0].token_id
-              }
-            }}
-            as={`/chatroom/${tokenAddress}/${nft[0].token_id}`}
-          >
-            <Button>Chat Room</Button>
-          </Link>      
-        </div> ))} */}
         <Grid container spacing={0} >
         {nfts?.slice(index.prev, index.current)?.map( (nft) => (
           <Grid item xs={6} >

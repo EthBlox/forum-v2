@@ -10,7 +10,6 @@ import Grid from '@material-ui/core/Grid';
 import PropTypes from 'prop-types';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Loading from '../components/Loading';
 import Collections from '../components/Collections';
 import SubCollections from '../components/SubCollections';
 import PolyCollections from '../components/PolyCollections';

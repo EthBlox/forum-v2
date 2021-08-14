@@ -13,6 +13,7 @@ import getImage from './getImage';
 import { Button } from 'ui-neumorphism';
 import Link from 'next/link';
 import Grid from '@material-ui/core/Grid';
+import Loading from '../components/Loading';
 
 
 const PolyCollections = ({ address, collectionsLoaded, index, onClick }) => {
@@ -68,10 +69,10 @@ const PolyCollections = ({ address, collectionsLoaded, index, onClick }) => {
       console.log(collections)
       setCollections(collections);
       collectionsLoaded(collections);
+      setIsLoading(false)
     };
     if (collections == null) {
       createCollection();
-      setIsLoading(false);
     }
   }, []);
 
@@ -84,6 +85,10 @@ const PolyCollections = ({ address, collectionsLoaded, index, onClick }) => {
 
 
   const renderData = () => {
+
+    if (isLoading) {
+      return <Loading />
+    }
 
     return (
       <>

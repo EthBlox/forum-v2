@@ -14,6 +14,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'ui-neumorphism';
 import Grid from '@material-ui/core/Grid';
+import Loading from '../components/Loading';
 
 
 const Collections = ({ address, loadCollections, collectionsLoaded, index, onClick }) => {
@@ -34,6 +35,7 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
       console.log('completed');
       setCollections(collections);
       collectionsLoaded(collections);
+      setIsLoading(false);
     };
     if (collections == null) {
       createCollection();
@@ -51,6 +53,10 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
 
 
   const renderData = () => {
+    if (isLoading) {
+      return <Loading />
+    }
+
     return (
       <>
         <Grid container spacing={0} >
