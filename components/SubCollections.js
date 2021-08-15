@@ -4,11 +4,11 @@ import {
   getExternalNFTMetadata, 
   getHistoricalPortfolioValueOverTime,
   getTokenBalancesForAddress
-} from '../pages/api/classA';
+} from '../src/pages/api/classA';
 import {
   ETHEREUM
-} from '../pages/api/constants';
-import { getTokenMetaData } from '../pages/api/queries';
+} from '../src/pages/api/constants';
+import { getTokenMetaData } from '../src/pages/api/queries';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'ui-neumorphism';
@@ -73,7 +73,8 @@ const SubCollections = ({ address, tokenAddress, index }) => {
                         query: {
                           image_url: token.image_url,
                           name: token.name,
-                          chain: ETHEREUM
+                          chain: ETHEREUM,
+                          user: queryAddress,
                         }
                       }}
                       as={`/chatroom/${tokenAddress}/${token.token_id}`}

@@ -3,10 +3,10 @@ import {
   getNFTTokenIDs, 
   getExternalNFTMetadata, 
   getTokenBalancesForAddress
-} from '../pages/api/classA';
+} from '../src/pages/api/classA';
 import {
   MATIC
-} from '../pages/api/constants';
+} from '../src/pages/api/constants';
 import Image from 'next/image';
 import Default from '../public/assets/comingSoon.gif';
 import getImage from './getImage';
@@ -121,7 +121,8 @@ const PolyCollections = ({ address, collectionsLoaded, index, onClick }) => {
                       query: {
                         image_url: "",
                         name: collection.contract_name,
-                        chain: MATIC
+                        chain: MATIC,
+                        user: queryAddress
                       }
                     }}
                     as={`/chatroom/${collection.contract_address}`}

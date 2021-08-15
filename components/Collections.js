@@ -4,12 +4,12 @@ import {
   getExternalNFTMetadata, 
   getHistoricalPortfolioValueOverTime,
   getTokenBalancesForAddress
-} from '../pages/api/classA';
+} from '../src/pages/api/classA';
 import {
   ETHEREUM
-} from '../pages/api/constants';
-import { getTokenMetaData } from '../pages/api/queries';
-import { getCollectionsData } from '../pages/api/queries';
+} from '../src/pages/api/constants';
+import { getTokenMetaData } from '../src/pages/api/queries';
+import { getCollectionsData } from '../src/pages/api/queries';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'ui-neumorphism';
@@ -94,7 +94,8 @@ const Collections = ({ address, loadCollections, collectionsLoaded, index, onCli
                       query: {
                         image_url: collection.featured_image_url,
                         name: collection.name,
-                        chain: ETHEREUM
+                        chain: ETHEREUM,
+                        user: queryAddress
                       }
                     }}
                     as={`/chatroom/${collection.primary_asset_contracts[0].address}`}

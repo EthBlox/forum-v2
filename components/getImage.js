@@ -1,10 +1,10 @@
 import React from 'react';
 import { 
   getExternalNFTMetadata
-} from '../pages/api/classA';
+} from '../src/pages/api/classA';
 import {
   MATIC
-} from '../pages/api/constants';
+} from '../src/pages/api/constants';
 import Default from '../public/assets/default.png';
 
 const getImage = async (address, tokenID) => {

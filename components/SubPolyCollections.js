@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { 
   getExternalNFTMetadata, 
-} from '../pages/api/classA';
+} from '../src/pages/api/classA';
 import {
   MATIC
-} from '../pages/api/constants';
+} from '../src/pages/api/constants';
 import Image from 'next/image';
 import Default from '../public/assets/comingSoon.gif';
 import { Button } from 'ui-neumorphism';
@@ -13,13 +13,14 @@ import Grid from '@material-ui/core/Grid';
 import Loading from '../components/Loading';
 
 
-const SubCollections = ({ tokenAddress, collections, index }) => {
+const SubCollections = ({ address, tokenAddress, collections, index }) => {
 
   console.log(tokenAddress);
   console.log(collections);
   const [ nfts, setNFTs] = useState(null);
   const [name, setName] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const queryAddress = address;
 
   useEffect(() => {
     const createTokens = async (nftData) => {
@@ -89,7 +90,8 @@ const SubCollections = ({ tokenAddress, collections, index }) => {
                       query: {
                         image_url: "",
                         name: name + " #" + nft[0].token_id,
-                        chain: MATIC
+                        chain: MATIC,
+                        user: queryAddress,
                       }
                     }}
                     as={`/chatroom/${tokenAddress}/${nft[0].token_id}`}

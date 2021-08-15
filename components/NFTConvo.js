@@ -3,12 +3,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Kongz from '../public/assets/CyberKong.png';
 import Default from '../public/assets/comingSoon.gif';
-import { NFTStorage, File } from 'nft.storage';
+import CeramicClient from '@ceramicnetwork/http-client';
+// authentication to perform writes with client
+import ThreeIdResolver from '@ceramicnetwork/3id-did-resolver';
+import { IDX } from '@ceramicstudio/idx';
+import { EthereumAuthProvider, ThreeIdConnect } from '@3id/connect';
+// creating a did instance
+import { DID } from 'dids';
+import { definitions } from '../src/config.json';
+import {Button} from 'ui-neumorphism';
+import { TileDocument } from '@ceramicnetwork/stream-tile';
 
 
 const NFTConvo = (desc) => {
   console.log(desc.desc);
-
+  const user = desc.desc.user;
   const image = desc.desc.image_url;  
   const name = desc.desc.name;
   const URL = "https://theconvo.space/embed/dt?url=https%3A%2F%2Fethblox.on.fleek.co%2Ffrontend%2Fprofile.html%3F&threadId=";
@@ -38,26 +47,48 @@ const NFTConvo = (desc) => {
   console.log(threadID)
   const chatRoomLink = `${URL}${threadID}`;
 
-
-  const apiKey  = process.env.NEXT_PUBLIC_NFT_STORAGE;
-  const client = new NFTStorage({ token: apiKey })
-
-  const metadata = await client.store({
-    name: 'Pinpie',
-    description: 'Pin is not delicious beef!',
-    image: new File([/* data */], 'pinpie.jpg', { type: 'image/jpg' })
-  })
-  console.log(metadata.url)
-
-
-
-
-
-
+  const networks = {
+  ethereum: 'ethereum',
+  bitcoin: 'bitcoin',
+  cosmos: 'cosmos',
+  kusama: 'kusama'
+  }
+  // https://github.com/ChainAgnostic/CAIPs/blob/master/CAIPs/caip-10.md
+  const caip10Links = {
+    // ethereum mainnet
+    ethereum: "@eip155:1",
+    bitcoin: '@bip122:000000000019d6689c085ae165831e93',
+    cosmos: '@cosmos:cosmoshub-3',
+    kusama: '@polkadot:b0a8d493285c2df73290dfb7e61f870f'
+  }
 
 
 
+  async function getRecord({
+    endpoint = "https://ceramic-clay.3boxlabs.com",
+    } = {}) {
 
+    const ceramic = new CeramicClient(endpoint)
+
+    const idx = new IDX({ ceramic, aliases: definitions })
+    // querying record
+    console.log(user);
+    try {
+      const data = await idx.get('notes', `${user}${caip10Links.ethereum}`)
+      const streamId = data.notes[0].id.slice(10)
+      
+      const stream = await ceramic.loadStream(streamId);
+      console.log(stream);
+
+      const doc = await TileDocument.load(ceramic, streamId)
+      console.log(doc)
+
+
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
 
 
   return (
@@ -73,8 +104,20 @@ const NFTConvo = (desc) => {
               <h3 className="nft-h3">{name}</h3>
           </div>
           <div className="nft-description">
-            <p>this is a very cool nft and i really like it!!!! :D</p>
-            <p>Idk what other info would go here yet.</p>
+            <p>No existing definitions, create one!</p>
+            <Button onClick={getRecord}>Create</Button>
+            <p>
+              <Link 
+                href={{
+                  pathname: "/edit",
+                  query: {
+                    collectionID: threadID,
+                  }
+                }}
+                >
+                Edit Description
+              </Link>
+            </p>
             <Link href={openSeaURL}>
               For more information head to OpenSea
             </Link>
