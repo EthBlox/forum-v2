@@ -1,4 +1,4 @@
-import React,  {useState } from 'react';
+import React,  {useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Kongz from '../public/assets/CyberKong.png';
@@ -64,8 +64,8 @@ const NFTConvo = (desc) => {
   }
 
 
-
-  async function getRecord({
+  useEffect(() => {
+    async function getRecord({
     endpoint = "https://ceramic-clay.3boxlabs.com",
     } = {}) {
 
@@ -90,8 +90,38 @@ const NFTConvo = (desc) => {
     } catch (err) {
       console.log(err);
     }
+  };
 
-  }
+  getRecord();
+
+  }, []);
+  // async function getRecord({
+  //   endpoint = "https://ceramic-clay.3boxlabs.com",
+  //   } = {}) {
+
+  //   const ceramic = new CeramicClient(endpoint)
+
+  //   const idx = new IDX({ ceramic, aliases: definitions })
+  //   // querying record
+  //   console.log(user);
+  //   try {
+  //     const data = await idx.get('notes', `${user}${caip10Links.ethereum}`)
+  //     const streamId = data.notes[0].id.slice(10)
+      
+  //     const stream = await ceramic.loadStream(streamId);
+  //     console.log(stream);
+
+  //     const doc = await TileDocument.load(ceramic, streamId)
+  //     console.log(doc)
+
+  //     const description = doc.state.content.text;
+  //     setDescription(description);
+
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+
+  // }
 
 
   return (
@@ -108,7 +138,7 @@ const NFTConvo = (desc) => {
           </div>
           <div className="nft-description">
             <p>{ description !== null ? description : "No existing definitions, create one!"}</p>
-            <Button onClick={getRecord}>generate</Button>
+            {/* <Button onClick={getRecord}>generate</Button> */}
             <p>
               <Link 
                 href={{
