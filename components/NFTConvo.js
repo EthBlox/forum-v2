@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Kongz from '../public/assets/CyberKong.png';
 import Default from '../public/assets/comingSoon.gif';
-import { NFTStorage, File } from 'nft.storage';
 
 
 const NFTConvo = (desc) => {
@@ -37,17 +36,6 @@ const NFTConvo = (desc) => {
   console.log(desc.desc.id)
   console.log(threadID)
   const chatRoomLink = `${URL}${threadID}`;
-
-
-  const apiKey  = process.env.NEXT_PUBLIC_NFT_STORAGE;
-  const client = new NFTStorage({ token: apiKey })
-
-  const metadata = await client.store({
-    name: 'Pinpie',
-    description: 'Pin is not delicious beef!',
-    image: new File([/* data */], 'pinpie.jpg', { type: 'image/jpg' })
-  })
-  console.log(metadata.url)
 
 
 
