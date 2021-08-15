@@ -1,4 +1,4 @@
-import React from 'react';
+import React,  {useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Kongz from '../public/assets/CyberKong.png';
@@ -16,6 +16,7 @@ import { TileDocument } from '@ceramicnetwork/stream-tile';
 
 
 const NFTConvo = (desc) => {
+  const [description, setDescription] = useState(null);
   console.log(desc.desc);
   const user = desc.desc.user;
   const image = desc.desc.image_url;  
@@ -83,6 +84,8 @@ const NFTConvo = (desc) => {
       const doc = await TileDocument.load(ceramic, streamId)
       console.log(doc)
 
+      const description = doc.state.content.text;
+      setDescription(description);
 
     } catch (err) {
       console.log(err);
@@ -104,8 +107,8 @@ const NFTConvo = (desc) => {
               <h3 className="nft-h3">{name}</h3>
           </div>
           <div className="nft-description">
-            <p>No existing definitions, create one!</p>
-            <Button onClick={getRecord}>Create</Button>
+            <p>{ description !== null ? description : "No existing definitions, create one!"}</p>
+            <Button onClick={getRecord}>generate</Button>
             <p>
               <Link 
                 href={{
