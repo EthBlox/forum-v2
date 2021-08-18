@@ -49,3 +49,7 @@ Built with:
 * [The Convo Space](https://theconvo.space/)
 * [Polygon](https://polygon.technology/)
 * [Fleek](https://fleek.co/)
+
+
+## Warning!
+In the event that you're unable to access chatrooms (due to issues we're having with fleek, do pass in this api key: `ckey_76c87eaec2a44809b3633e9eeb3` to `NEXT_PUBLIC_API_KEY` and run the application on your local host)
