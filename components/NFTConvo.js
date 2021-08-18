@@ -1,17 +1,17 @@
 import React,  {useState, useEffect } from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
-import Kongz from '../public/assets/CyberKong.png';
+// import Kongz from '../public/assets/CyberKong.png';
 import Default from '../public/assets/comingSoon.gif';
 import CeramicClient from '@ceramicnetwork/http-client';
 // authentication to perform writes with client
-import ThreeIdResolver from '@ceramicnetwork/3id-did-resolver';
+// import ThreeIdResolver from '@ceramicnetwork/3id-did-resolver';
 import { IDX } from '@ceramicstudio/idx';
-import { EthereumAuthProvider, ThreeIdConnect } from '@3id/connect';
+// import { EthereumAuthProvider, ThreeIdConnect } from '@3id/connect';
 // creating a did instance
-import { DID } from 'dids';
+// import { DID } from 'dids';
 import { definitions } from '../src/config.json';
-import {Button} from 'ui-neumorphism';
+// import {Button} from 'ui-neumorphism';
 import { TileDocument } from '@ceramicnetwork/stream-tile';
 
 

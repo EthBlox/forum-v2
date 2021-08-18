@@ -113,8 +113,8 @@
 
 // export default ValidateAuth;
 
-import React, { useEffect, useState } from 'react';
-import { ethers, BigNumber, providers, utils } from 'ethers'
+import React, {useState } from 'react';
+import { ethers} from 'ethers'
 import { Button } from 'ui-neumorphism';
 import Web3Modal from "web3modal";
 import axios from "axios";

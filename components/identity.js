@@ -2,8 +2,8 @@ import Ceramic from '@ceramicnetwork/http-client'
 import {IDX} from '@ceramicstudio/idx'
 import {Ed25519Provider} from 'key-did-provider-ed25519'
 import {definitions} from "../utils/config.json"
-import { BigNumber, utils, ethers } from 'ethers'
-import { hashSync } from 'bcryptjs'
+// import { BigNumber, utils, ethers } from 'ethers'
+// import { hashSync } from 'bcryptjs'
 
 const CERAMIC_URL = 'https://ceramic.signchain.xyz'
 

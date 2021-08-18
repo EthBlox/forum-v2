@@ -16,7 +16,7 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Paper from '@material-ui/core/Paper'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 import TextField from '@material-ui/core/TextField'
-import Toolbar from '@material-ui/core/Toolbar'
+// import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import {
   makeStyles,
@@ -29,13 +29,13 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import ErrorIcon from '@material-ui/icons/ErrorOutline'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
-import MenuIcon from '@material-ui/icons/Menu'
+// import MenuIcon from '@material-ui/icons/Menu'
 import NoteIcon from '@material-ui/icons/Note'
 import NoteAddIcon from '@material-ui/icons/NoteAdd'
 import UploadIcon from '@material-ui/icons/CloudUpload'
-import { randomBytes } from '@stablelib/random'
+// import { randomBytes } from '@stablelib/random'
 import React, { useRef, useState } from 'react'
-import { fromString, toString } from 'uint8arrays'
+// import { fromString, toString } from 'uint8arrays'
 import { useApp } from '../../components/State';
 import type {
   AuthState,
@@ -47,8 +47,8 @@ import type {
 import {TileDocument} from "@ceramicnetwork/stream-tile";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 import { useRouter } from 'next/router';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+// import Header from '../../components/Header';
+// import Footer from '../../components/Footer';
 
 
 const drawerWidth = 300

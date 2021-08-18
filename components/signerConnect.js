@@ -1,5 +1,5 @@
 import { BigNumber, providers, utils } from 'ethers'
-import { hashSync } from 'bcryptjs'
+// import { hashSync } from 'bcryptjs'
 
 const generateMessageForEntropy = (ethereum_address, application_name) => {
     return (

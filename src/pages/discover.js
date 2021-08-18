@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import Grid from '@material-ui/core/Grid';
-import Image from 'next/image';
-import Link from 'next/link';
+// import Grid from '@material-ui/core/Grid';
+// import Image from 'next/image';
+// import Link from 'next/link';
 
 
 const Discover = () => {

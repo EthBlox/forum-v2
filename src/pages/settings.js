@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import { useState, useRef } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -9,7 +8,6 @@ import {
 } from '../../utils/identity';
 import {
   Card, 
-  Subtitle2, 
   H5, 
   Body2, 
   CardHeader, 
@@ -17,7 +15,6 @@ import {
   CardAction,
   Button,
   Avatar,
-  IconButton,
   TextField ,
 } from 'ui-neumorphism';
 

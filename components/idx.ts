@@ -7,10 +7,10 @@ import KeyDidResolver from 'key-did-resolver'
 import type { ResolverRegistry } from 'did-resolver'
 import { DID } from 'dids'
 import { definitions } from '../src/config.json';
-import {
-  client,
-  getRecord
-} from '../utils/identity';
+// import {
+//   client,
+//   getRecord
+// } from '../utils/identity';
 import { Caip10Link } from '@ceramicnetwork/stream-caip10-link'
 
 // const CERAMIC_URL = 'http://localhost:7007'
