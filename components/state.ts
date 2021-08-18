@@ -4,8 +4,8 @@ import { useCallback, useReducer } from 'react'
 import { TileDocument } from '@ceramicnetwork/stream-tile';
 
 import { schemas } from '../src/config.json'
-import { getIDX } from './idx'
-import type { IDXInit, NotesList } from './idx'
+import { getIDX } from './Idx'
+import type { IDXInit, NotesList } from './Idx'
 
 type AuthStatus = 'pending' | 'loading' | 'failed'
 export type DraftStatus = 'unsaved' | 'saving' | 'failed' | 'saved'

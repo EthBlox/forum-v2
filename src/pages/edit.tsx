@@ -36,14 +36,14 @@ import UploadIcon from '@material-ui/icons/CloudUpload'
 import { randomBytes } from '@stablelib/random'
 import React, { useRef, useState } from 'react'
 import { fromString, toString } from 'uint8arrays'
-import { useApp } from '../../components/state';
+import { useApp } from '../../components/State';
 import type {
   AuthState,
   DraftStatus,
   IndexLoadedNote,
   State,
   StoredNote,
-} from '../../components/state';
+} from '../../components/State';
 import {TileDocument} from "@ceramicnetwork/stream-tile";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 import { useRouter } from 'next/router';
@@ -380,6 +380,7 @@ export default function App() {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
+      
       <NotesList
         deleteDraft={app.deleteDraft}
         openDraft={app.openDraft}

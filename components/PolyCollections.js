@@ -9,7 +9,7 @@ import {
 } from '../src/pages/api/constants';
 import Image from 'next/image';
 import Default from '../public/assets/comingSoon.gif';
-import getImage from './getImage';
+import getImage from './GetImage';
 import { Button } from 'ui-neumorphism';
 import Link from 'next/link';
 import Grid from '@material-ui/core/Grid';
