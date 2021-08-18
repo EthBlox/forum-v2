@@ -36,14 +36,14 @@ import UploadIcon from '@material-ui/icons/CloudUpload'
 // import { randomBytes } from '@stablelib/random'
 import React, { useRef, useState } from 'react'
 // import { fromString, toString } from 'uint8arrays'
-import { useApp } from '../../components/State';
+import { useApp } from '../../components/state';
 import type {
   AuthState,
   DraftStatus,
   IndexLoadedNote,
   State,
   StoredNote,
-} from '../../components/State';
+} from '../../components/state';
 import {TileDocument} from "@ceramicnetwork/stream-tile";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 import { useRouter } from 'next/router';
