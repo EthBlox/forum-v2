@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/pages/index.js',
     module: {
         rules: [{
             test: /\.tsx?$/,
