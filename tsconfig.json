@@ -23,7 +23,7 @@
   },
   "include": [
     "src"
-, "components/Idx.ts"  ],
+, "components/idx.ts"  ],
   "exclude": [
     "node_modules"
   ]
