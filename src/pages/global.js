@@ -1,5 +1,5 @@
 import React from 'react';
-import ValidateAuth from '../../components/ValidAuth';
+// import ValidateAuth from '../../components/ValidAuth';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { makeStyles } from '@material-ui/core/styles';
