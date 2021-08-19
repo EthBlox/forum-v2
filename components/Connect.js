@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { ethers } from 'ethers'
 import { Button } from 'ui-neumorphism';
 import Web3Modal from "web3modal";

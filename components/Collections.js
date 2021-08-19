@@ -1,16 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { 
-  getNFTTokenIDs, 
-  getExternalNFTMetadata, 
-  getHistoricalPortfolioValueOverTime,
-  getTokenBalancesForAddress
-} from '../src/pages/api/classA';
+import React, { useState, useEffect } from 'react';
+// import { 
+//   getNFTTokenIDs, 
+//   getExternalNFTMetadata, 
+//   getHistoricalPortfolioValueOverTime,
+//   getTokenBalancesForAddress
+// } from '../src/pages/api/classA';
 import {
   ETHEREUM
 } from '../src/pages/api/constants';
-import { getTokenMetaData } from '../src/pages/api/queries';
+// import { getTokenMetaData } from '../src/pages/api/queries';
 import { getCollectionsData } from '../src/pages/api/queries';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from 'ui-neumorphism';
 import Grid from '@material-ui/core/Grid';

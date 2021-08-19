@@ -1,6 +1,6 @@
 import CeramicClient from "@ceramicnetwork/http-client";
 import { IDX } from '@ceramicstudio/idx'
-import { Ed25519Provider } from 'key-did-provider-ed25519'
+// import { Ed25519Provider } from 'key-did-provider-ed25519'
 import ThreeIdResolver from '@ceramicnetwork/3id-did-resolver'
 import { EthereumAuthProvider, ThreeIdConnect } from '@3id/connect'
 import KeyDidResolver from 'key-did-resolver'
